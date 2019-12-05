@@ -1,0 +1,6 @@
+com/ib/library/model/Work.class
+com/ib/library/model/App.class
+com/ib/library/model/Author.class
+com/ib/library/model/Book.class
+com/ib/library/model/Loan.class
+com/ib/library/model/User.class

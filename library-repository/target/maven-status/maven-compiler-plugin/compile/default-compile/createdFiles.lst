@@ -1,0 +1,6 @@
+com/ib/library/repository/UserDao.class
+com/ib/library/repository/App.class
+com/ib/library/repository/WorkDao.class
+com/ib/library/repository/LoanDao.class
+com/ib/library/repository/AuthorDao.class
+com/ib/library/repository/BookDao.class
