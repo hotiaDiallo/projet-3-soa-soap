@@ -6,6 +6,6 @@ com/ib/library/service/abstraction/LoanService.class
 com/ib/library/service/impl/LoanServiceImpl.class
 com/ib/library/service/abstraction/UserService.class
 com/ib/library/service/impl/WorkServiceImpl.class
-com/ib/library/service/App.class
+com/ib/library/service/Application.class
 com/ib/library/service/abstraction/BookService.class
 com/ib/library/service/impl/BookServiceImpl.class

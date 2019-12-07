@@ -1,6 +1,6 @@
-endPoint/AuthorEndPoint.class
-endPoint/BookEndPoint.class
-endPoint/LoanEndPoint.class
 endPoint/UserEndPoint.class
 endPoint/WorkEndPoint.class
+endPoint/AuthorEndPoint.class
 Application.class
+endPoint/BookEndPoint.class
+endPoint/LoanEndPoint.class
