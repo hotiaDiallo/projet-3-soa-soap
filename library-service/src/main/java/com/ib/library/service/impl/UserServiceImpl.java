@@ -3,6 +3,7 @@ package com.ib.library.service.impl;
 import com.ib.library.model.User;
 import com.ib.library.repository.UserRepository;
 import com.ib.library.service.abstraction.UserService;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,5 +33,10 @@ public class UserServiceImpl implements UserService {
       System.out.println("User does not exist");
       return null;
     }
+  }
+
+  @Override
+  public List<User> findAll() {
+    return (List<User>) userRepository.findAll();
   }
 }
