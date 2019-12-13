@@ -27,10 +27,11 @@ public class SoapWebServiceConfig extends WsConfigurerAdapter {
 
   @Bean
   public XsdSchema userSchema() {
-    return new SimpleXsdSchema(new ClassPathResource("user.xsd"));
+    return new SimpleXsdSchema(new ClassPathResource("/user.xsd"));
   }
 
-  @Bean
+
+  @Bean(name = "user")
   public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema userSchema) {
 
     DefaultWsdl11Definition definition = new DefaultWsdl11Definition();

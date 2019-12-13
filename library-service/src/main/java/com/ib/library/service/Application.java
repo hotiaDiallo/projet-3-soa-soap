@@ -14,8 +14,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = {"com.ib.library"})
 @EntityScan(basePackages = {"com.ib.library"})
-@ComponentScan(basePackages = {"com.ib.library.service"})
+@ComponentScan(basePackages = {"com.ib.library.service", "com.ib.library.repository"})
 public class Application implements CommandLineRunner {
+
   @Autowired
   private UserRepository userRepository;
 
