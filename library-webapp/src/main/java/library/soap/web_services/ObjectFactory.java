@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.12.10 à 07:57:54 PM CET 
+// Généré le : 2019.12.14 à 10:19:20 PM CET 
 //
 
 
@@ -37,11 +37,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LoginResponse }
+     * Create an instance of {@link GetUserLoginRequest }
      * 
      */
-    public LoginResponse createLoginResponse() {
-        return new LoginResponse();
+    public GetUserLoginRequest createGetUserLoginRequest() {
+        return new GetUserLoginRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetUserLoginResponse }
+     * 
+     */
+    public GetUserLoginResponse createGetUserLoginResponse() {
+        return new GetUserLoginResponse();
     }
 
     /**
@@ -50,46 +58,6 @@ public class ObjectFactory {
      */
     public UserWS createUserWS() {
         return new UserWS();
-    }
-
-    /**
-     * Create an instance of {@link GetUserByIdResponse }
-     * 
-     */
-    public GetUserByIdResponse createGetUserByIdResponse() {
-        return new GetUserByIdResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetUserCreateRequest }
-     * 
-     */
-    public GetUserCreateRequest createGetUserCreateRequest() {
-        return new GetUserCreateRequest();
-    }
-
-    /**
-     * Create an instance of {@link GetUserByIdRequest }
-     * 
-     */
-    public GetUserByIdRequest createGetUserByIdRequest() {
-        return new GetUserByIdRequest();
-    }
-
-    /**
-     * Create an instance of {@link GetUserCreateResponse }
-     * 
-     */
-    public GetUserCreateResponse createGetUserCreateResponse() {
-        return new GetUserCreateResponse();
-    }
-
-    /**
-     * Create an instance of {@link LoginRequest }
-     * 
-     */
-    public LoginRequest createLoginRequest() {
-        return new LoginRequest();
     }
 
 }

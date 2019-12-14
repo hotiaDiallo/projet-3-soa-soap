@@ -27,7 +27,7 @@ public class SoapWebServiceConfig extends WsConfigurerAdapter {
 
   @Bean
   public XsdSchema userSchema() {
-    return new SimpleXsdSchema(new ClassPathResource("/user.xsd"));
+    return new SimpleXsdSchema(new ClassPathResource("library.xsd"));
   }
 
 

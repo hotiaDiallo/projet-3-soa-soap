@@ -2,8 +2,8 @@ package endPoint;
 
 import com.ib.library.model.User;
 import com.ib.library.service.abstraction.UserService;
-import library.soap.web_services.LoginRequest;
-import library.soap.web_services.LoginResponse;
+import library.soap.web_services.GetUserLoginRequest;
+import library.soap.web_services.GetUserLoginResponse;
 import library.soap.web_services.UserWS;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +21,8 @@ public class UserEndPoint {
 
   @PayloadRoot(namespace = NAMESPACE_URI, localPart = "LoginRequest")
   @ResponsePayload
-  public LoginResponse logUserIn(@RequestPayload LoginRequest loginRequest){
-    LoginResponse loginResponse = new LoginResponse();
+  public GetUserLoginResponse logUserIn(@RequestPayload GetUserLoginRequest loginRequest){
+    GetUserLoginResponse loginResponse = new GetUserLoginResponse();
     User user = null;
     user = userService.login(loginRequest.getEmail(), loginRequest.getPassword());
 
