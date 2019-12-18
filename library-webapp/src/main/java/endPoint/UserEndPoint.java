@@ -1,5 +1,6 @@
 package endPoint;
 
+import config_const.Utils;
 import com.ib.library.model.User;
 import com.ib.library.service.abstraction.UserService;
 import library.soap.web_services.GetUserLoginRequest;
@@ -14,12 +15,11 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 @Endpoint
 public class UserEndPoint {
-  private static final String NAMESPACE_URI = "http://library/soap/web-services";
 
   @Autowired
   private UserService userService;
 
-  @PayloadRoot(namespace = NAMESPACE_URI, localPart = "LoginRequest")
+  @PayloadRoot(namespace = Utils.NAMESPACE_URI, localPart = "LoginRequest")
   @ResponsePayload
   public GetUserLoginResponse logUserIn(@RequestPayload GetUserLoginRequest loginRequest){
     GetUserLoginResponse loginResponse = new GetUserLoginResponse();
@@ -29,7 +29,7 @@ public class UserEndPoint {
     UserWS userWS = null;
     if(user != null){
        userWS = new UserWS();
-      BeanUtils.copyProperties(user, userWS);
+       BeanUtils.copyProperties(user, userWS);
     }
     loginResponse.setUserWS(userWS);
     return loginResponse;
