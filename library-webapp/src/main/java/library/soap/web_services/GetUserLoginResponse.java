@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.12.14 à 10:19:20 PM CET 
+// Généré le : 2019.12.18 à 09:25:19 PM CET 
 //
 
 
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="userWS" type="{http://library/soap/web-services}userWS"/>
+ *         &lt;element name="user" type="{http://library/soap/web-services}userWS"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,36 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "userWS"
+    "user"
 })
 @XmlRootElement(name = "GetUserLoginResponse")
 public class GetUserLoginResponse {
 
     @XmlElement(required = true, nillable = true)
-    protected UserWS userWS;
+    protected UserWS user;
 
     /**
-     * Obtient la valeur de la propriété userWS.
+     * Obtient la valeur de la propriété user.
      * 
      * @return
      *     possible object is
      *     {@link UserWS }
      *     
      */
-    public UserWS getUserWS() {
-        return userWS;
+    public UserWS getUser() {
+        return user;
     }
 
     /**
-     * Définit la valeur de la propriété userWS.
+     * Définit la valeur de la propriété user.
      * 
      * @param value
      *     allowed object is
      *     {@link UserWS }
      *     
      */
-    public void setUserWS(UserWS value) {
-        this.userWS = value;
+    public void setUser(UserWS value) {
+        this.user = value;
     }
 
 }

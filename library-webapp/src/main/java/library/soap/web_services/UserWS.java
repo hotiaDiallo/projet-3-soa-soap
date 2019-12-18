@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.12.14 à 10:19:20 PM CET 
+// Généré le : 2019.12.18 à 09:25:19 PM CET 
 //
 
 
@@ -47,38 +47,29 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class UserWS {
 
-    @XmlElement(required = true, type = Integer.class, nillable = true)
-    protected Integer id;
-    @XmlElement(required = true, nillable = true)
+    protected int id;
+    @XmlElement(required = true)
     protected String firstName;
-    @XmlElement(required = true, nillable = true)
+    @XmlElement(required = true)
     protected String lastName;
-    @XmlElement(required = true, nillable = true)
+    @XmlElement(required = true)
     protected String email;
-    @XmlElement(required = true, nillable = true)
+    @XmlElement(required = true)
     protected String password;
 
     /**
      * Obtient la valeur de la propriété id.
      * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
      */
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
     /**
      * Définit la valeur de la propriété id.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
      */
-    public void setId(Integer value) {
+    public void setId(int value) {
         this.id = value;
     }
 

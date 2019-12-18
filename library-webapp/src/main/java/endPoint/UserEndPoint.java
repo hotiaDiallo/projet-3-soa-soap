@@ -31,7 +31,7 @@ public class UserEndPoint {
        userWS = new UserWS();
        BeanUtils.copyProperties(user, userWS);
     }
-    loginResponse.setUserWS(userWS);
+    loginResponse.setUser(userWS);
     return loginResponse;
   }
 }
