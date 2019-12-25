@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = {"com.ib.library"})
 @EntityScan(basePackages = {"com.ib.library"})
-@ComponentScan(basePackages = {"com.ib.library.service", "com.ib.library.repository"})
+@ComponentScan(basePackages = {"com.ib.library.service", "com.ib.library.repository", "com.ib.library.model"})
 public class Application implements CommandLineRunner {
 
   public static void main(String[] args) {

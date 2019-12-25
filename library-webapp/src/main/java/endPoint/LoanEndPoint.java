@@ -31,7 +31,7 @@ public class LoanEndPoint {
 
   @PayloadRoot(namespace = Utils.NAMESPACE_URI, localPart = "getLoansRequest")
   @ResponsePayload
-  public GetLoansRequest getAllLoans(){
+  public GetLoansResponse getAllLoans(){
     GetLoansResponse loansResponse = new GetLoansResponse();
     List<Loan> loans = loanService.findAllLoans();
     List<LoanWS>listLoanWS = new ArrayList<>();
@@ -40,48 +40,49 @@ public class LoanEndPoint {
       BeanUtils.copyProperties(loan, loanWS);
       listLoanWS.add(loanWS);
     }
-    return null;
+    loansResponse.getLoans().addAll(listLoanWS);
+    return loansResponse;
   }
 
   @PayloadRoot(namespace = Utils.NAMESPACE_URI, localPart = "getLoanByUserRequest")
   @ResponsePayload
-  public GetLoanByUserRequest getLoanByUser (@RequestPayload GetLoanByUserRequest request){
+  public GetLoanByUserResponse getLoanByUser (@RequestPayload GetLoanByUserRequest request){
     GetLoanByUserResponse loanByUserResponse = new GetLoanByUserResponse();
     UserWS userWS = request.getUser();
     User user = new User();
     if( userWS != null){
       BeanUtils.copyProperties(userWS, user);
-      List<Loan> loans = loanService.findLoanByUser(user.getId());
+      List<Loan> loans = loanService.findLoanByUser(user);
       List<LoanWS> listLoans = new ArrayList<>();
       for(Loan loan : loans){
         LoanWS loanWS = new LoanWS();
         BeanUtils.copyProperties(loan, loanWS);
         listLoans.add(loanWS);
       }
+      loanByUserResponse.getLoan().addAll(listLoans);
     }
-    return null;
+    return loanByUserResponse;
   }
 
-  @PayloadRoot(namespace = Utils.NAMESPACE_URI, localPart = "getLoanByBookRequest")
-  @ResponsePayload
-  public GetLoanByBookResponse getLoanByBook(@RequestPayload GetLoanByBookRequest request){
-    GetLoanByBookResponse getLoanByBookResponse = new GetLoanByBookResponse();
-    BookWS bookWS = request.getBook();
-    Book book = null;
-    LoanWS loanWS = null;
-    if (bookWS != null){
-      book = new Book();
-      BeanUtils.copyProperties(bookWS, book);
-    }
-    if( book != null){
-      Loan loan = loanService.findLoanByBook(book.getId()).get();
-      loanWS = new LoanWS();
-      BeanUtils.copyProperties(loan, loanWS);
-    }
-    getLoanByBookResponse.setLoan(loanWS);
-    return getLoanByBookResponse;
-  }
-
+//  @PayloadRoot(namespace = Utils.NAMESPACE_URI, localPart = "getLoanByBookRequest")
+//  @ResponsePayload
+//  public GetLoanByBookResponse getLoanByBook(@RequestPayload GetLoanByBookRequest request){
+//    GetLoanByBookResponse getLoanByBookResponse = new GetLoanByBookResponse();
+//    BookWS bookWS = request.getBook();
+//    Book book = null;
+//    LoanWS loanWS = null;
+//    if (bookWS != null){
+//      book = new Book();
+//      BeanUtils.copyProperties(bookWS, book);
+//    }
+//    if( book != null){
+//      Loan loan = loanService.findLoanByBook(book.getId()).get();
+//      loanWS = new LoanWS();
+//      BeanUtils.copyProperties(loan, loanWS);
+//    }
+//    getLoanByBookResponse.setLoan(loanWS);
+//    return getLoanByBookResponse;
+//  }
 
 
 }

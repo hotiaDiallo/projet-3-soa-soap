@@ -9,6 +9,7 @@
 /home/ibrahima/Perso/library-parent/library-webapp/src/main/java/library/soap/web_services/GetLoanByBookRequest.java
 /home/ibrahima/Perso/library-parent/library-webapp/src/main/java/library/soap/web_services/GetLoanCreateResponse.java
 /home/ibrahima/Perso/library-parent/library-webapp/src/main/java/library/soap/web_services/ObjectFactory.java
+/home/ibrahima/Perso/library-parent/library-webapp/src/main/java/library/soap/web_services/GetWorkByAuthorResponse.java
 /home/ibrahima/Perso/library-parent/library-webapp/src/main/java/library/soap/web_services/AuthorWS.java
 /home/ibrahima/Perso/library-parent/library-webapp/src/main/java/library/soap/web_services/GetUserLoginRequest.java
 /home/ibrahima/Perso/library-parent/library-webapp/src/main/java/endPoint/LoanEndPoint.java
@@ -26,4 +27,5 @@
 /home/ibrahima/Perso/library-parent/library-webapp/src/main/java/library/soap/web_services/GetWorkByTitleRequest.java
 /home/ibrahima/Perso/library-parent/library-webapp/src/main/java/library/soap/web_services/GetLoanByUserResponse.java
 /home/ibrahima/Perso/library-parent/library-webapp/src/main/java/library/soap/web_services/UserWS.java
+/home/ibrahima/Perso/library-parent/library-webapp/src/main/java/library/soap/web_services/GetWorkByAuthorRequest.java
 /home/ibrahima/Perso/library-parent/library-webapp/src/main/java/endPoint/AuthorEndPoint.java

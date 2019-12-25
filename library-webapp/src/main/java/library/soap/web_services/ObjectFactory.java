@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.12.18 à 09:25:19 PM CET 
+// Généré le : 2019.12.25 à 02:33:03 PM CET 
 //
 
 
@@ -42,6 +42,22 @@ public class ObjectFactory {
      */
     public GetWorkByTitleRequest createGetWorkByTitleRequest() {
         return new GetWorkByTitleRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetWorkByAuthorResponse }
+     * 
+     */
+    public GetWorkByAuthorResponse createGetWorkByAuthorResponse() {
+        return new GetWorkByAuthorResponse();
+    }
+
+    /**
+     * Create an instance of {@link WorkWS }
+     * 
+     */
+    public WorkWS createWorkWS() {
+        return new WorkWS();
     }
 
     /**
@@ -101,19 +117,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetWorkByAuthorRequest }
+     * 
+     */
+    public GetWorkByAuthorRequest createGetWorkByAuthorRequest() {
+        return new GetWorkByAuthorRequest();
+    }
+
+    /**
+     * Create an instance of {@link AuthorWS }
+     * 
+     */
+    public AuthorWS createAuthorWS() {
+        return new AuthorWS();
+    }
+
+    /**
      * Create an instance of {@link GetLoanCreateRequest }
      * 
      */
     public GetLoanCreateRequest createGetLoanCreateRequest() {
         return new GetLoanCreateRequest();
-    }
-
-    /**
-     * Create an instance of {@link WorkWS }
-     * 
-     */
-    public WorkWS createWorkWS() {
-        return new WorkWS();
     }
 
     /**
@@ -178,14 +202,6 @@ public class ObjectFactory {
      */
     public GetWorkByResumeResponse createGetWorkByResumeResponse() {
         return new GetWorkByResumeResponse();
-    }
-
-    /**
-     * Create an instance of {@link AuthorWS }
-     * 
-     */
-    public AuthorWS createAuthorWS() {
-        return new AuthorWS();
     }
 
 }

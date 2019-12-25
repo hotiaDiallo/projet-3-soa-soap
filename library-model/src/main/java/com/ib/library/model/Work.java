@@ -1,6 +1,8 @@
 package com.ib.library.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,20 +22,21 @@ public class Work implements Serializable {
   @Column(name = "id", nullable = false, unique = true)
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
-  //@Column(name="title", length = 255)
   private String title;
-  //@Column(name="resume", length = 255)
   private String resume;
+  private Date releaseDate;
+
   @ManyToOne(fetch = FetchType.LAZY)
   private Author author;
-  @OneToMany(mappedBy = "work", fetch = FetchType.LAZY)
-  private List<Book> books;
+  @OneToMany(mappedBy = "work", fetch = FetchType.EAGER)
+  private List<Book> books = new ArrayList<>();
 
   public Work() {
   }
 
-  public Work(String title, String resume) {
+  public Work(String title, Date releaseDate, String resume) {
     this.title = title;
+    this.releaseDate = releaseDate;
     this.resume = resume;
   }
 
@@ -43,6 +46,27 @@ public class Work implements Serializable {
 
   public void setId(Integer id) {
     this.id = id;
+  }
+
+  public boolean isLoanable(){
+    boolean status = false;
+    for(Book book : books){
+      if(book.getBookStatus()==true){
+        status = true;
+        break;
+      }else{
+        continue;
+      }
+    }
+    return status;
+  }
+
+  public Date getReleaseDate() {
+    return releaseDate;
+  }
+
+  public void setReleaseDate(Date releaseDate) {
+    this.releaseDate = releaseDate;
   }
 
   public Author getAuthor() {

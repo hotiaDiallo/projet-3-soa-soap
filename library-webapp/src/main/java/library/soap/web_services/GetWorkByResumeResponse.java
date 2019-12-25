@@ -2,12 +2,14 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.12.18 à 09:25:19 PM CET 
+// Généré le : 2019.12.25 à 02:33:03 PM CET 
 //
 
 
 package library.soap.web_services;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -25,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="work" type="{http://library/soap/web-services}workWS"/>
+ *         &lt;element name="work" type="{http://www.w3.org/2001/XMLSchema}anyType" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -42,30 +44,35 @@ import javax.xml.bind.annotation.XmlType;
 public class GetWorkByResumeResponse {
 
     @XmlElement(required = true, nillable = true)
-    protected WorkWS work;
+    protected List<Object> work;
 
     /**
-     * Obtient la valeur de la propriété work.
+     * Gets the value of the work property.
      * 
-     * @return
-     *     possible object is
-     *     {@link WorkWS }
-     *     
-     */
-    public WorkWS getWork() {
-        return work;
-    }
-
-    /**
-     * Définit la valeur de la propriété work.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the work property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link WorkWS }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getWork().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Object }
+     * 
+     * 
      */
-    public void setWork(WorkWS value) {
-        this.work = value;
+    public List<Object> getWork() {
+        if (work == null) {
+            work = new ArrayList<Object>();
+        }
+        return this.work;
     }
 
 }

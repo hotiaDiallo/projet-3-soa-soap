@@ -18,19 +18,17 @@ public class Book implements Serializable {
   @Column(name = "id", unique = true, nullable = false)
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
-  //@Column(name = "isbn")
   private String ISBN;
   @ManyToOne(targetEntity = Work.class, fetch = FetchType.LAZY)
   private Work work;
-  //@Column(name = "book_status")
   private boolean bookStatus;
 
   public Book() {
   }
 
-  public Book(Work work, boolean bookStatus) {
-    this.work = work;
+  public Book(String ISBN, boolean bookStatus) {
     this.bookStatus = bookStatus;
+    this.ISBN = ISBN;
   }
 
   public Integer getId() {
@@ -57,7 +55,7 @@ public class Book implements Serializable {
     this.work = work;
   }
 
-  public boolean isBookStatus() {
+  public boolean getBookStatus() {
     return bookStatus;
   }
 

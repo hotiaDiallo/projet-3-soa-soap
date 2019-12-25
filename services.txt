@@ -1,0 +1,9 @@
+- Listes
+liste work par author / date de parution;
+work par title;
+
+- emprunter un book avec l'id d'une oeuvre
+- restituer un emprunt
+- prolonger un emprunt
+
+- Revoir l'histoire des fetch

@@ -29,17 +29,17 @@ public class Loan implements Serializable {
   //@Column(name = "return_date")
   private Date returnDate;
   //@Column(name = "loan_extended")
-  private boolean loanExtended;
+  private String loanStatus;
 
   public Loan(){
   }
 
-  public Loan(User user, Work work, Date borrowingDate, Date returnDate, boolean loanExtended) {
+  public Loan(User user, Work work, Date borrowingDate, Date returnDate, String loanExtended) {
     this.user = user;
     this.work = work;
     this.borrowingDate = borrowingDate;
     this.returnDate = returnDate;
-    this.loanExtended = loanExtended;
+    this.loanStatus = loanStatus;
   }
 
   public Integer getId() {
@@ -82,11 +82,11 @@ public class Loan implements Serializable {
     this.returnDate = returnDate;
   }
 
-  public boolean isLoanExtended() {
-    return loanExtended;
+  public String getLoanStatus() {
+    return loanStatus;
   }
 
-  public void setLoanExtended(boolean loanExtended) {
-    this.loanExtended = loanExtended;
+  public void setLoanStatus(String loanStatus) {
+    this.loanStatus = loanStatus;
   }
 }

@@ -8,6 +8,7 @@ endPoint/WorkEndPoint.class
 library/soap/web_services/GetUserLoginRequest.class
 library/soap/web_services/package-info.class
 library/soap/web_services/LoanWS.class
+library/soap/web_services/GetWorkByAuthorResponse.class
 library/soap/web_services/GetLoanByUserResponse.class
 endPoint/UserEndPoint.class
 library/soap/web_services/BookWS.class
@@ -18,6 +19,7 @@ library/soap/web_services/GetLoanByBookRequest.class
 library/soap/web_services/WorkWS.class
 library/soap/web_services/ObjectFactory.class
 library/soap/web_services/GetWorkByResumeResponse.class
+library/soap/web_services/GetWorkByAuthorRequest.class
 library/soap/web_services/GetLoanByUserRequest.class
 config_const/Utils.class
 endPoint/AuthorEndPoint.class
