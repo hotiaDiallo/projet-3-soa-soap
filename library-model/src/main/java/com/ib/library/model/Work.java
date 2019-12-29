@@ -14,7 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "work")
 public class Work implements Serializable {
@@ -22,22 +21,21 @@ public class Work implements Serializable {
   @Column(name = "id", nullable = false, unique = true)
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
-  private String title;
-  private String resume;
-  private Date releaseDate;
-
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.EAGER)
   private Author author;
+  private String title;
+  private String summary;
+  private Date releaseDate;
   @OneToMany(mappedBy = "work", fetch = FetchType.EAGER)
   private List<Book> books = new ArrayList<>();
 
   public Work() {
   }
 
-  public Work(String title, Date releaseDate, String resume) {
+  public Work(String title, Date releaseDate, String summary) {
     this.title = title;
     this.releaseDate = releaseDate;
-    this.resume = resume;
+    this.summary = summary;
   }
 
   public Integer getId() {
@@ -85,12 +83,12 @@ public class Work implements Serializable {
     this.title = title;
   }
 
-  public String getResume() {
-    return resume;
+  public String getSummary() {
+    return summary;
   }
 
-  public void setResume(String resume) {
-    this.resume = resume;
+  public void setSummary(String summary) {
+    this.summary = summary;
   }
 
   public List<Book> getBooks() {

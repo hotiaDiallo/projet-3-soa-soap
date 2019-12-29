@@ -6,6 +6,7 @@ import com.ib.library.model.User;
 import com.ib.library.model.Work;
 import com.ib.library.repository.AuthorRepository;
 import com.ib.library.repository.BookRepository;
+import com.ib.library.repository.LoanRepository;
 import com.ib.library.repository.UserRepository;
 import com.ib.library.repository.WorkRepository;
 import com.ib.library.service.abstraction.BookService;
@@ -36,9 +37,10 @@ public class Application implements CommandLineRunner {
   private WorkRepository workRepository;
   @Autowired
   private BookRepository bookRepository;
-
   @Autowired
   private AuthorRepository authorRepository;
+  @Autowired
+  private LoanRepository loanRepository;
 
   @Autowired
   private UserService userService;
@@ -56,61 +58,42 @@ public class Application implements CommandLineRunner {
 
     DateFormat def = new SimpleDateFormat("dd/MM/yyy");
 
-    /* USER CREATION*/
-    User user1 = new User("john", "Doe", "john1@gmail.com", "1234");
-    User user2 = new User("john", "Doe", "john2@gmail.com", "1234");
-    User user3 = new User("john", "Doe", "john3@gmail.com", "1234");
-    User user4 = new User("john", "Doe", "john4@gmail.com", "1234");
-    User user5 = new User("Ibrahima", "Diallo", "ibra@gmail.com", "1234");
-    userRepository.save(user1);
-    userRepository.save(user2);
-    userRepository.save(user3);
-    userRepository.save(user4);
-    userRepository.save(user5);
-    //userRepository.findAll().forEach(p->System.out.println(p.getEmail()));
+    System.out.println("AUTHORS");
+    authorRepository.findAll().forEach(author->System.out.println(author));
+    Author author = authorRepository.findById(1).get();
 
+    System.out.println("BOOKS");
+    bookRepository.findAll().forEach(book->System.out.println(book));
 
-    /* WORK CREATION*/
-    Work work1 = new Work("title1", def.parse("12/10/1992"), "resume1");
-    Work work2 = new Work("title2", def.parse("06/01/2000"), "resume2");
-    Work work3 = new Work("title3", def.parse("10/10/2010"), "resume3");
+    System.out.println("WORKS");
+    workRepository.findAll().forEach(work->System.out.println(work));
 
-    /* BOOK CREATION*/
-    Book book1 = new Book("ISBN1", false);
-    Book book2 = new Book("ISBN2", false);
-    Book book3 = new Book("ISBN3", true);
-    Book book4 = new Book("ISBN4", true);
+    System.out.println("USERS");
+    userRepository.findAll().forEach(user->System.out.println(user));
 
-    bookRepository.save(book1);
-    bookRepository.save(book2);
-    bookRepository.save(book3);
-    bookRepository.save(book4);
+    System.out.println("LOANS");
+    loanRepository.findAll().forEach(loan->System.out.println(loan));
 
-
-
-    work1.getBooks().add(book1);
-    work1.getBooks().add(book2);
-    work1.getBooks().add(book3);
-    workRepository.save(work1);
-    workRepository.save(work2);
-    workRepository.save(work3);
-
-    Author author1 = new Author("John", "Doe");
-
-    System.out.println("################ TEST WORK SERVICE ###############");
-    System.out.println("Find by Title");
-    System.out.println(workService.findWorkByTitle("title1").getReleaseDate());
-    System.out.println("Find by Release Date");
-    System.out.println(workService.findWorkByReleaseDate(def.parse("06/01/2000")).getTitle());
 
     System.out.println("IS LOANABLE");
-    System.out.println(workService.findWorkByTitle("title1").isLoanable());
+    Work work1 = workService.findWorkByTitle("title1");
+    Work work3 = workService.findWorkByTitle("title3");
+    if (work1.isLoanable()) {
+      System.out.println("Cette oeuvre est disponible");
+    } else {
+      System.out.println("Non disponible");
+    }
 
+    if (work3.isLoanable()) {
+      System.out.println("Cette oeuvre est disponible");
+    } else {
+      System.out.println("Non disponible");
+    }
 
-    System.out.println("################ ALL WORKS ###############");
-    List<Work> works = (List<Work>) workService.findAllWorks();
+    System.out.println("Listes des works par author");
+    List<Work> works = workService.findWorkByAuthor(author);
     for (Work work: works) {
-      System.out.println(work.getTitle());
+      System.out.println(author.getFirstName()+":"+work.getTitle());
     }
 
 

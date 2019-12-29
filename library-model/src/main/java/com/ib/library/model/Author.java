@@ -2,6 +2,7 @@ package com.ib.library.model;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,12 +20,10 @@ public class Author implements Serializable {
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "id", nullable = false, unique = true)
   private Integer id;
-  //@Column(name = "first_name")
   private String firstName;
-  //@Column(name = "first_name")
   private String lastName;
 
-  @OneToMany(mappedBy = "author", fetch = FetchType.LAZY, targetEntity = Work.class)
+  @OneToMany(mappedBy = "author", fetch = FetchType.EAGER, targetEntity = Work.class)
   private List<Work> works;
 
   public List<Work> getWorks() {
@@ -41,6 +40,24 @@ public class Author implements Serializable {
   public Author(String firstName, String lastName) {
     this.firstName = firstName;
     this.lastName = lastName;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Author author = (Author) o;
+    return firstName.equals(author.firstName) &&
+        lastName.equals(author.lastName);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(firstName, lastName);
   }
 
   public Integer getId() {

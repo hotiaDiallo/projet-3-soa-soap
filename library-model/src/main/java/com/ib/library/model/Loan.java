@@ -20,25 +20,22 @@ public class Loan implements Serializable {
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "id", nullable = false, unique = true)
   private Integer id;
-  @ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
+  @ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
   private User user;
-  @OneToOne(targetEntity = Work.class, fetch = FetchType.LAZY)
+  @OneToOne(targetEntity = Work.class, fetch = FetchType.EAGER)
   private Work work;
-  //@Column(name = "borrowing_date")
   private Date borrowingDate;
-  //@Column(name = "return_date")
-  private Date returnDate;
-  //@Column(name = "loan_extended")
+  private Date returningDate;
   private String loanStatus;
 
   public Loan(){
   }
 
-  public Loan(User user, Work work, Date borrowingDate, Date returnDate, String loanExtended) {
+  public Loan(User user, Work work, Date borrowingDate, Date returningDate, String loanExtended) {
     this.user = user;
     this.work = work;
     this.borrowingDate = borrowingDate;
-    this.returnDate = returnDate;
+    this.returningDate = returningDate;
     this.loanStatus = loanStatus;
   }
 
@@ -74,12 +71,12 @@ public class Loan implements Serializable {
     this.borrowingDate = borrowingDate;
   }
 
-  public Date getReturnDate() {
-    return returnDate;
+  public Date getReturningDate() {
+    return returningDate;
   }
 
-  public void setReturnDate(Date returnDate) {
-    this.returnDate = returnDate;
+  public void setReturningDate(Date returningDate) {
+    this.returningDate = returningDate;
   }
 
   public String getLoanStatus() {

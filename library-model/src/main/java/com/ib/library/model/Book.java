@@ -18,9 +18,9 @@ public class Book implements Serializable {
   @Column(name = "id", unique = true, nullable = false)
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
-  private String ISBN;
-  @ManyToOne(targetEntity = Work.class, fetch = FetchType.LAZY)
+  @ManyToOne(targetEntity = Work.class, fetch = FetchType.EAGER)
   private Work work;
+  private String ISBN;
   private boolean bookStatus;
 
   public Book() {

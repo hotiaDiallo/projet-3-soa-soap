@@ -9,5 +9,6 @@ public interface WorkService {
   List<Work> findWorkByAuthor(Author author);
   Work findWorkByTitle(String title);
   Work findWorkByReleaseDate(Date releaseDate);
+  List<Work> findWorskByAuthorAndReleaseDate(Author author, Date releaseDate);
   Iterable<Work> findAllWorks();
 }
