@@ -1,22 +1,10 @@
 package endPoint;
 
-import com.ib.library.model.Author;
-import com.ib.library.model.Loan;
-import com.ib.library.model.User;
 import com.ib.library.model.Work;
 import com.ib.library.service.abstraction.WorkService;
 import config_const.Utils;
-import java.util.ArrayList;
-import java.util.List;
-import library.soap.web_services.AuthorWS;
-import library.soap.web_services.GetWorkByAuthorRequest;
-import library.soap.web_services.GetWorkByAuthorResponse;
 import library.soap.web_services.GetWorkByTitleRequest;
 import library.soap.web_services.GetWorkByTitleResponse;
-import library.soap.web_services.LoanWS;
-import library.soap.web_services.UserWS;
-import library.soap.web_services.WorkWS;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;

@@ -1,8 +1,8 @@
 package com.ib.library.model;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,14 +23,14 @@ public class Author implements Serializable {
   private String firstName;
   private String lastName;
 
-  @OneToMany(mappedBy = "author", fetch = FetchType.EAGER, targetEntity = Work.class)
-  private List<Work> works;
+  @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
+  private Set<Work> works;
 
-  public List<Work> getWorks() {
+  public Set<Work> getWorks() {
     return works;
   }
 
-  public void setWorks(List<Work> works) {
+  public void setWorks(Set<Work> works) {
     this.works = works;
   }
 

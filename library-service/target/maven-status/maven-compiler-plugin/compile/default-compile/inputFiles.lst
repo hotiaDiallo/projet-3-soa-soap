@@ -5,6 +5,7 @@
 /home/ibrahima/Perso/library-parent/library-service/src/main/java/com/ib/library/service/abstraction/LoanService.java
 /home/ibrahima/Perso/library-parent/library-service/src/main/java/com/ib/library/service/Application.java
 /home/ibrahima/Perso/library-parent/library-service/src/main/java/com/ib/library/service/abstraction/WorkService.java
+/home/ibrahima/Perso/library-parent/library-service/src/main/java/com/ib/library/service/Utils/Status.java
 /home/ibrahima/Perso/library-parent/library-service/src/main/java/com/ib/library/service/impl/WorkServiceImpl.java
 /home/ibrahima/Perso/library-parent/library-service/src/main/java/com/ib/library/service/impl/LoanServiceImpl.java
 /home/ibrahima/Perso/library-parent/library-service/src/main/java/com/ib/library/service/impl/BookServiceImpl.java

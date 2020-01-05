@@ -22,8 +22,8 @@ public class Loan implements Serializable {
   private Integer id;
   @ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
   private User user;
-  @OneToOne(targetEntity = Work.class, fetch = FetchType.EAGER)
-  private Work work;
+  @OneToOne(targetEntity = Book.class, fetch = FetchType.EAGER)
+  private Book book;
   private Date borrowingDate;
   private Date returningDate;
   private String loanStatus;
@@ -31,9 +31,9 @@ public class Loan implements Serializable {
   public Loan(){
   }
 
-  public Loan(User user, Work work, Date borrowingDate, Date returningDate, String loanExtended) {
+  public Loan(User user, Book book, Date borrowingDate, Date returningDate, String loanExtended) {
     this.user = user;
-    this.work = work;
+    this.book = book;
     this.borrowingDate = borrowingDate;
     this.returningDate = returningDate;
     this.loanStatus = loanStatus;
@@ -55,12 +55,12 @@ public class Loan implements Serializable {
     this.user = user;
   }
 
-  public Work getWork() {
-    return work;
+  public Book getBook() {
+    return book;
   }
 
-  public void setWork(Work work) {
-    this.work = work;
+  public void setBook(Book book) {
+    this.book = book;
   }
 
   public Date getBorrowingDate() {

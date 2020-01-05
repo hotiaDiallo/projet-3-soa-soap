@@ -9,3 +9,4 @@ com/ib/library/service/abstraction/WorkService.class
 com/ib/library/service/impl/WorkServiceImpl.class
 com/ib/library/service/Application.class
 com/ib/library/service/impl/BookServiceImpl.class
+com/ib/library/service/Utils/Status.class

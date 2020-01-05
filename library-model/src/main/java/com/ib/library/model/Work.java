@@ -26,8 +26,10 @@ public class Work implements Serializable {
   private String title;
   private String summary;
   private Date releaseDate;
-  @OneToMany(mappedBy = "work", fetch = FetchType.EAGER)
+  @OneToMany(mappedBy = "work", fetch = FetchType.EAGER, targetEntity = Book.class)
   private List<Book> books = new ArrayList<>();
+  @ManyToOne(fetch = FetchType.EAGER)
+  private Library library;
 
   public Work() {
   }
@@ -36,14 +38,6 @@ public class Work implements Serializable {
     this.title = title;
     this.releaseDate = releaseDate;
     this.summary = summary;
-  }
-
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
   }
 
   public boolean isLoanable(){
@@ -57,6 +51,27 @@ public class Work implements Serializable {
       }
     }
     return status;
+  }
+
+  public Book getAvailableBook(List<Book> books){
+    Book newBook = null;
+    for(Book book : books){
+      if(book.getBookStatus()){
+        newBook = book;
+        break;
+      }else {
+        continue;
+      }
+    }
+    return newBook;
+  }
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public Date getReleaseDate() {
@@ -97,5 +112,13 @@ public class Work implements Serializable {
 
   public void setBooks(List<Book> books) {
     this.books = books;
+  }
+
+  public Library getLibrary() {
+    return library;
+  }
+
+  public void setLibrary(Library library) {
+    this.library = library;
   }
 }

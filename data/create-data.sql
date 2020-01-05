@@ -5,6 +5,8 @@ DROP TABLE IF EXISTS work;
 DROP TABLE IF EXISTS book;
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS loan;
+DROP TABLE IF EXISTS library;
+
 
 CREATE TABLE author (
                 id INT AUTO_INCREMENT NOT NULL,
@@ -23,6 +25,12 @@ CREATE TABLE work (
 PRIMARY KEY (id)
 );
 
+CREATE TABLE library (
+                id INT NOT NULL,
+                name VARCHAR(50) NOT NULL,
+                work_id INT NOT NULL,
+PRIMARY KEY (id)
+);
 
 CREATE TABLE book (
                 id INT AUTO_INCREMENT NOT NULL,
@@ -70,6 +78,12 @@ REFERENCES work (id)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
 
+ALTER TABLE library ADD CONSTRAINT work_library_fk
+FOREIGN KEY (work_id)
+REFERENCES work (id)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
 ALTER TABLE loan ADD CONSTRAINT work_loan_fk
 FOREIGN KEY (work_id)
 REFERENCES work (id)
@@ -87,34 +101,41 @@ REFERENCES user (id)
 
 -- ================================== user =================================== --
 
-INSERT INTO user (first_name, last_name, birth_date, local_adress, postal_code, city, email, password, phone_number) VALUES ('John', 'Doe', null, null, null, null, "jonhDoe@gmail.com", "1234", null);
+INSERT INTO user (id, first_name, last_name, birth_date, local_adress, postal_code, city, email, password, phone_number) VALUES (1, 'John', 'Doe', null, null, null, null, "jonhDoe@gmail.com", "1234", null);
 
-INSERT INTO user (first_name, last_name, birth_date, local_adress, postal_code, city, email, password, phone_number) VALUES ('ibra', 'Diallo', null, null, null, null, "ibraDiallo@gmail.com", "1234", null);
+INSERT INTO user (id, first_name, last_name, birth_date, local_adress, postal_code, city, email, password, phone_number) VALUES (2, 'ibra', 'Diallo', null, null, null, null, "ibraDiallo@gmail.com", "1234", null);
 
-INSERT INTO user (first_name, last_name, birth_date, local_adress, postal_code, city, email, password, phone_number) VALUES ('Paul', 'Walker', null, null, null, null, "paulWalker@gmail.com", "1234", null);
+INSERT INTO user (id, first_name, last_name, birth_date, local_adress, postal_code, city, email, password, phone_number) VALUES (3, 'Paul', 'Walker', null, null, null, null, "paulWalker@gmail.com", "1234", null);
 
+INSERT INTO user (id, first_name, last_name, birth_date, local_adress, postal_code, city, email, password, phone_number) VALUES (4, 'user1', 'nameUser1', null, null, null, null, "user1@gmail.com", "1234", null);
+
+INSERT INTO user (id, first_name, last_name, birth_date, local_adress, postal_code, city, email, password, phone_number) VALUES (5, 'user2', 'nameUser2', null, null, null, null, "user2@gmail.com", "1234", null);
 
 -- ================================== author =================================== --
-INSERT INTO author (first_name, last_name) VALUES ('John', 'Doe');
-INSERT INTO author (first_name, last_name) VALUES ('ibrahima', 'Diallo');
-INSERT INTO author (first_name, last_name) VALUES ('Philip K.', 'Dick');
-INSERT INTO author (first_name, last_name) VALUES ('Stephen', 'King');
-INSERT INTO author (first_name, last_name) VALUES ('Henri', 'Troyat');
-INSERT INTO author (first_name, last_name) VALUES ('Henri', 'Gougaud');
+INSERT INTO author (id, first_name, last_name) VALUES (1, 'John', 'Doe');
+INSERT INTO author (id, first_name, last_name) VALUES (2, 'ibrahima', 'Diallo');
+INSERT INTO author (id, first_name, last_name) VALUES (3, 'Philip K.', 'Dick');
+INSERT INTO author (id, first_name, last_name) VALUES (4, 'Stephen', 'King');
+INSERT INTO author (id, first_name, last_name) VALUES (5, 'Henri', 'Troyat');
+INSERT INTO author (id, first_name, last_name) VALUES (6, 'Henri', 'Gougaud');
 
+-- ==================================  library =================================== --
+
+INSERT INTO library (id, name) VALUES (1, "library1");
+INSERT INTO library (id, name) VALUES (2, "library2");
 
 -- ================================== work =================================== --
-INSERT INTO work (id,  author_id, title, summary, release_date)
-VALUES (1, 2, 'title1', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, ab', '2017-12-27 15:42:33');
+INSERT INTO work (id, author_id, library_id, title, summary, release_date)
+VALUES (1, 2, 1, 'title1', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, ab', '2017-12-27 15:42:33');
 
-INSERT INTO work (id, author_id, title, summary, release_date)
-VALUES (2, 2, 'title2', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, ab', '2018-12-27 15:42:33');
+INSERT INTO work (id, author_id, library_id, title, summary, release_date)
+VALUES (2, 2, 1, 'title2', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, ab', '2018-12-27 15:42:33');
 
-INSERT INTO work (id, author_id, title, summary, release_date)
-VALUES (3, 1, 'title3', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, ab', '2019-12-27 15:42:33');
+INSERT INTO work (id, author_id, library_id, title, summary, release_date)
+VALUES (3, 1, 2, 'title3', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, ab', '2019-12-27 15:42:33');
 
-INSERT INTO work (id, author_id, title, summary, release_date)
-VALUES (4, 3, 'title4', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, ab', '2016-12-27 15:42:33');
+INSERT INTO work (id, author_id, library_id, title, summary, release_date)
+VALUES (4, 3, 2, 'title4', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, ab', '2016-12-27 15:42:33');
 
 -- ==================================  book =================================== --
 
@@ -132,12 +153,12 @@ INSERT INTO book (id, work_id, isbn, book_status) VALUES (6, 2, 'isbn6', true);
 
 -- ==================================  loan =================================== --
 
-INSERT INTO loan (id, user_id, work_id, borrowing_date, returning_date, loan_status) VALUES (1, 1, 2, '2017-12-27 18:02:44.000000', '2018-02-21', true);
+INSERT INTO loan (id, user_id, book_id, borrowing_date, returning_date, loan_status) VALUES (1, 1, 2, '2017-12-27 18:02:44.000000', '2018-02-21', true);
 
-INSERT INTO loan (id, user_id,work_id, borrowing_date, returning_date, loan_status) VALUES (2, 2, 2, '2017-12-27 18:02:44.000000', '2018-02-21', true);
+INSERT INTO loan (id, user_id,book_id, borrowing_date, returning_date, loan_status) VALUES (2, 2, 2, '2017-12-27 18:02:44.000000', '2018-02-21', true);
 
-INSERT INTO loan (id, user_id, work_id, borrowing_date, returning_date, loan_status) VALUES (3, 1, 3, '2017-12-27 18:02:44.000000', '2018-02-21', false);
+INSERT INTO loan (id, user_id, book_id, borrowing_date, returning_date, loan_status) VALUES (3, 1, 3, '2017-12-27 18:02:44.000000', '2018-02-21', false);
 
-INSERT INTO loan (id, user_id, work_id, borrowing_date, returning_date, loan_status) VALUES (4, 3, 1, '2017-12-27 18:02:44.000000', '2018-02-21', false);
+INSERT INTO loan (id, user_id, book_id, borrowing_date, returning_date, loan_status) VALUES (4, 3, 1, '2017-12-27 18:02:44.000000', '2018-02-21', false);
 
-INSERT INTO loan (id, user_id,work_id, borrowing_date, returning_date, loan_status) VALUES (5, 2, 3, '2017-12-27 18:02:44.000000', '2018-02-21', true);
+INSERT INTO loan (id, user_id,book_id, borrowing_date, returning_date, loan_status) VALUES (5, 2, 3, '2017-12-27 18:02:44.000000', '2018-02-21', true);

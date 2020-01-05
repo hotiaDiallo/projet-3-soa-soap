@@ -10,4 +10,5 @@ public interface WorkRepository extends CrudRepository<Work, Integer> {
   Work findWorkByTitle(String title);
   List<Work> findWorkByAuthor(Author author);
   Work findByReleaseDate(Date releaseDate);
+  Work findWorkByAuthorAndReleaseDate(Author author, Date releaseDate);
 }

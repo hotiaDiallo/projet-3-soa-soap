@@ -19,10 +19,15 @@ public class User implements Serializable {
   private Integer id;
   private String firstName;
   private String lastName;
+  @Column(nullable = true)
   private Date birthDate;
+  @Column(nullable = true)
   private String localAdress;
+  @Column(nullable = true)
   private Integer postalCode;
+  @Column(nullable = true)
   private String city;
+  @Column(nullable = true)
   private String phoneNumber;
   private String email;
   private String password;

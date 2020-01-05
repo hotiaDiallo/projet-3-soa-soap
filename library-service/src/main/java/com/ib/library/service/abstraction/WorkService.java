@@ -6,9 +6,10 @@ import java.util.Date;
 import java.util.List;
 
 public interface WorkService {
+  Work findWorkById(Integer id);
+  Work findWorkByAuthorAndReleaseDate(Author author, Date releaseDate);
   List<Work> findWorkByAuthor(Author author);
   Work findWorkByTitle(String title);
   Work findWorkByReleaseDate(Date releaseDate);
-  List<Work> findWorskByAuthorAndReleaseDate(Author author, Date releaseDate);
   Iterable<Work> findAllWorks();
 }
