@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,22 +13,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "work")
 public class Work implements Serializable {
-  @Id
-  @Column(name = "id", nullable = false, unique = true)
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @Id @GeneratedValue(generator="gen_work", strategy = GenerationType.IDENTITY)
+  @SequenceGenerator(name="gen_work", sequenceName="seq_work", allocationSize=1)
   private Integer id;
   @ManyToOne(fetch = FetchType.EAGER)
   private Author author;
   private String title;
   private String summary;
   private Date releaseDate;
-  @OneToMany(mappedBy = "work", fetch = FetchType.EAGER, targetEntity = Book.class)
-  private List<Book> books = new ArrayList<>();
+  @OneToMany(fetch = FetchType.EAGER)
+  private List<Book> books;
   @ManyToOne(fetch = FetchType.EAGER)
   private Library library;
 

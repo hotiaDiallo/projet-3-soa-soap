@@ -7,4 +7,6 @@ public interface UserService {
   User login(String email, String password);
 
   List<User> findAll();
+
+  User findUserById(Integer userId);
 }

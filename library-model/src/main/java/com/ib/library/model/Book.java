@@ -8,18 +8,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="book")
 public class Book implements Serializable {
 
-  @Id
-  @Column(name = "id", unique = true, nullable = false)
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @Id @GeneratedValue(generator="gen_book", strategy = GenerationType.IDENTITY)
+  @SequenceGenerator(name="gen_book", sequenceName="seq_book", allocationSize=1)
   private Integer id;
-  @ManyToOne(targetEntity = Work.class, fetch = FetchType.EAGER)
-  private Work work;
   private String ISBN;
   private boolean bookStatus;
 
@@ -45,14 +43,6 @@ public class Book implements Serializable {
 
   public void setISBN(String ISBN) {
     this.ISBN = ISBN;
-  }
-
-  public Work getWork() {
-    return work;
-  }
-
-  public void setWork(Work work) {
-    this.work = work;
   }
 
   public boolean getBookStatus() {

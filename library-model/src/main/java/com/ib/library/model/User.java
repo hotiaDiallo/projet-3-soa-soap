@@ -7,15 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name = "user")
 public class User implements Serializable {
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "id", nullable = false, unique = true)
+  @Id @GeneratedValue(generator="gen_user", strategy = GenerationType.IDENTITY)
+  @SequenceGenerator(name="gen_user", sequenceName="seq_user", allocationSize=1)
   private Integer id;
   private String firstName;
   private String lastName;

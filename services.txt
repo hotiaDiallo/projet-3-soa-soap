@@ -1,3 +1,0 @@
-Faire un pret :
-
-- créer un pret;

@@ -8,6 +8,7 @@ import com.ib.library.repository.BookRepository;
 import com.ib.library.repository.LoanRepository;
 import com.ib.library.service.Utils.Status;
 import com.ib.library.service.abstraction.LoanService;
+import com.ib.library.service.abstraction.UserService;
 import com.ib.library.service.abstraction.WorkService;
 import java.util.Calendar;
 import java.util.Date;
@@ -20,6 +21,9 @@ public class LoanServiceImpl implements LoanService {
 
   @Autowired
   private LoanRepository loanRepository;
+
+  @Autowired
+  private UserService userService;
   @Autowired
   BookRepository bookRepository;
   @Autowired
@@ -31,7 +35,8 @@ public class LoanServiceImpl implements LoanService {
   }
 
   @Override
-  public String createLoan(Integer workId, User user) {
+  public String createLoan(Integer workId, Integer userId) {
+    User user = userService.findUserById(userId);
     Work work = workService.findWorkById(workId);
     if (work.isLoanable()){
       Loan loan = new Loan();
@@ -40,13 +45,12 @@ public class LoanServiceImpl implements LoanService {
       calendar.add(calendar.MONTH,1);
       Date returningDate = calendar.getTime();
       loan.setUser(user);
-      loan.setBook(work.getAvailableBook(work.getBooks()));
+      Book book = work.getAvailableBook(work.getBooks());
+      loan.setBook(book);
       loan.setBorrowingDate(borrowingDate);
       loan.setReturningDate(returningDate);
       loan.setLoanStatus(Status.STATUS_LOAN_ACTIVATED);
-      loan.setId(1);
       loanRepository.save(loan);
-      Book book = work.getAvailableBook(work.getBooks());
       book.setBookStatus(false);
       bookRepository.save(book);
       return "Success : loan created";
@@ -57,12 +61,13 @@ public class LoanServiceImpl implements LoanService {
 
 
   @Override
-  public List<Loan> findLoanByUser(User user) {
-    return loanRepository.findLoanByUser(user);
+  public List<Loan> findLoanByUser(Integer userId) {
+    return loanRepository.findLoanByUserId(userId);
   }
 
   @Override
-  public void returnLoan(Loan loan) {
+  public void returnLoan(Integer loanId) {
+    Loan loan = findLoanById(loanId);
     loan.setLoanStatus(Status.STATUS_LOAN_RETURNED);
     loanRepository.save(loan);
     Book book = loan.getBook();
@@ -71,10 +76,11 @@ public class LoanServiceImpl implements LoanService {
   }
 
   @Override
-  public void extendLoan(Loan loan) {
+  public void extendLoan(Integer loanId) {
+    Loan loan = findLoanById(loanId);
     Date returningDate = loan.getReturningDate();
     Calendar calendar = Calendar.getInstance();
-    loan.setBorrowingDate(returningDate);
+    calendar.setTime(returningDate);
     calendar.add(calendar.MONTH,1);
     Date returningDateAfterLoanExtended = calendar.getTime();
     loan.setReturningDate(returningDateAfterLoanExtended);

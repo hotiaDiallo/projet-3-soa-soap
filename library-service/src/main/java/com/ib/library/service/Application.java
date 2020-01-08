@@ -1,11 +1,13 @@
 package com.ib.library.service;
 
 import com.ib.library.model.Author;
+import com.ib.library.model.Library;
 import com.ib.library.model.Loan;
 import com.ib.library.model.User;
 import com.ib.library.model.Work;
 import com.ib.library.repository.AuthorRepository;
 import com.ib.library.repository.BookRepository;
+import com.ib.library.repository.LibraryRepository;
 import com.ib.library.repository.LoanRepository;
 import com.ib.library.repository.UserRepository;
 import com.ib.library.repository.WorkRepository;
@@ -15,6 +17,8 @@ import com.ib.library.service.abstraction.UserService;
 import com.ib.library.service.abstraction.WorkService;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -50,14 +54,15 @@ public class Application implements CommandLineRunner {
   @Autowired
   private BookService bookService;
 
+  @Autowired
+  private LibraryRepository libraryRepository;
+
   public static void main(String[] args) {
     SpringApplication.run(Application.class, args);
   }
 
   @Override
   public void run(String... args) throws Exception {
-
-//    DateFormat def = new SimpleDateFormat("dd/MM/yyy");
 //
 //
 //    System.out.println("AUTHORS");
@@ -71,7 +76,7 @@ public class Application implements CommandLineRunner {
 //    workRepository.findAll().forEach(work->System.out.println(work));
 //
 //    System.out.println("USERS");
-    User user1 = userRepository.findById(1).get();
+   // User user1 = userRepository.findById(2).get();
 //    userRepository.findAll().forEach(user->System.out.println(user));
 //
 //    System.out.println("LOANS");
@@ -100,12 +105,28 @@ public class Application implements CommandLineRunner {
 //    }
 //
 //    System.out.println("CREATE A LOAN");
-//    //Loan loan = loanService.createLoan(work1, user1, def.parse("12/02/2019"), def.parse("12/04/2020"));
-//    //System.out.println(loan);
+       //loanService.createLoan(1, 2);
+       //loanService.extendLoan(3);
+       //loanService.returnLoan(3);
 
-    System.out.println(loanService.createLoan(1, user1));
+       Calendar calendar = Calendar.getInstance();
+       Date releaseDate = calendar.getTime();
+       Work work = workRepository.findById(1).get();
+       work.setReleaseDate(releaseDate);
+       workRepository.save(work);
+       Work work1 = workService.findWorkByAuthorAndReleaseDate(authorRepository.findById(2).get(), releaseDate);
+       System.out.println("We found the work: " + work1.getTitle());
+
+
+
+    //System.out.println(loanService.createLoan(1, user1));
 //    Loan loan = loanService.findLoanById(5);
 //    loanService.extendLoan(loan);
+//    Author author = authorRepository.findById(2).get();
+//    Date releaseDate = null;
+//    DateFormat def = new SimpleDateFormat("yyyy-MM-dd hh:mm:s");
+//    Work work = workService.findWorkByAuthorAndReleaseDate(author, releaseDate);
+//    System.out.println(work);
 
   }
 }

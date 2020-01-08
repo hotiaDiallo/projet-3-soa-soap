@@ -10,15 +10,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "loan")
 public class Loan implements Serializable {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "id", nullable = false, unique = true)
+  @Id @GeneratedValue(generator="gen_loan", strategy = GenerationType.IDENTITY)
+  @SequenceGenerator(name="gen_loan", sequenceName="seq_loan", allocationSize=1)
   private Integer id;
   @ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
   private User user;

@@ -11,14 +11,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "author")
 public class Author implements Serializable {
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "id", nullable = false, unique = true)
+  @Id @GeneratedValue(generator="gen_author", strategy = GenerationType.IDENTITY)
+  @SequenceGenerator(name="gen_author", sequenceName="seq_author", allocationSize=1)
   private Integer id;
   private String firstName;
   private String lastName;
