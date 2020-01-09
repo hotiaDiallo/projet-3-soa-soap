@@ -105,9 +105,9 @@ public class Application implements CommandLineRunner {
 //    }
 //
 //    System.out.println("CREATE A LOAN");
-       //loanService.createLoan(1, 2);
-       //loanService.extendLoan(3);
-       //loanService.returnLoan(3);
+//    loanService.createLoan(1, 2);
+//    loanService.extendLoan(3);
+//    loanService.returnLoan(3);
 
        Calendar calendar = Calendar.getInstance();
        Date releaseDate = calendar.getTime();
@@ -116,17 +116,6 @@ public class Application implements CommandLineRunner {
        workRepository.save(work);
        Work work1 = workService.findWorkByAuthorAndReleaseDate(authorRepository.findById(2).get(), releaseDate);
        System.out.println("We found the work: " + work1.getTitle());
-
-
-
-    //System.out.println(loanService.createLoan(1, user1));
-//    Loan loan = loanService.findLoanById(5);
-//    loanService.extendLoan(loan);
-//    Author author = authorRepository.findById(2).get();
-//    Date releaseDate = null;
-//    DateFormat def = new SimpleDateFormat("yyyy-MM-dd hh:mm:s");
-//    Work work = workService.findWorkByAuthorAndReleaseDate(author, releaseDate);
-//    System.out.println(work);
 
   }
 }
