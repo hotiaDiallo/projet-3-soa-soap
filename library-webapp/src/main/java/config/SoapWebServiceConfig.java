@@ -26,12 +26,10 @@ public class SoapWebServiceConfig extends WsConfigurerAdapter {
     return new ServletRegistrationBean(servlet, "/soapWS/*");
   }
 
-
   @Bean
   public XsdSchema librarySchema() {
     return new SimpleXsdSchema(new ClassPathResource("library.xsd"));
   }
-
 
   @Bean(name = "library")
   public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema userSchema) {
@@ -43,6 +41,4 @@ public class SoapWebServiceConfig extends WsConfigurerAdapter {
     definition.setTargetNamespace(Utils.NAMESPACE_URI);
     return definition;
   }
-
-
 }

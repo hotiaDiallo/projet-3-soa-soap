@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.01.05 à 06:33:16 PM CET 
+// Généré le : 2020.01.09 à 08:12:17 PM CET 
 //
 
 
@@ -28,10 +28,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *       &lt;sequence>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="user" type="{http://library/soap/web-services}userWS"/>
- *         &lt;element name="work" type="{http://library/soap/web-services}workWS"/>
+ *         &lt;element name="book" type="{http://library/soap/web-services}bookWS"/>
  *         &lt;element name="borrowingDate" type="{http://www.w3.org/2001/XMLSchema}date"/>
  *         &lt;element name="returnDate" type="{http://www.w3.org/2001/XMLSchema}date"/>
- *         &lt;element name="loanExtended" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="loanStatus" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -44,10 +44,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "loanWS", propOrder = {
     "id",
     "user",
-    "work",
+    "book",
     "borrowingDate",
     "returnDate",
-    "loanExtended"
+    "loanStatus"
 })
 public class LoanWS {
 
@@ -56,14 +56,15 @@ public class LoanWS {
     @XmlElement(required = true)
     protected UserWS user;
     @XmlElement(required = true)
-    protected WorkWS work;
+    protected BookWS book;
     @XmlElement(required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar borrowingDate;
     @XmlElement(required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar returnDate;
-    protected boolean loanExtended;
+    @XmlElement(required = true)
+    protected String loanStatus;
 
     /**
      * Obtient la valeur de la propriété id.
@@ -114,27 +115,27 @@ public class LoanWS {
     }
 
     /**
-     * Obtient la valeur de la propriété work.
+     * Obtient la valeur de la propriété book.
      * 
      * @return
      *     possible object is
-     *     {@link WorkWS }
+     *     {@link BookWS }
      *     
      */
-    public WorkWS getWork() {
-        return work;
+    public BookWS getBook() {
+        return book;
     }
 
     /**
-     * Définit la valeur de la propriété work.
+     * Définit la valeur de la propriété book.
      * 
      * @param value
      *     allowed object is
-     *     {@link WorkWS }
+     *     {@link BookWS }
      *     
      */
-    public void setWork(WorkWS value) {
-        this.work = value;
+    public void setBook(BookWS value) {
+        this.book = value;
     }
 
     /**
@@ -186,19 +187,27 @@ public class LoanWS {
     }
 
     /**
-     * Obtient la valeur de la propriété loanExtended.
+     * Obtient la valeur de la propriété loanStatus.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public boolean isLoanExtended() {
-        return loanExtended;
+    public String getLoanStatus() {
+        return loanStatus;
     }
 
     /**
-     * Définit la valeur de la propriété loanExtended.
+     * Définit la valeur de la propriété loanStatus.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setLoanExtended(boolean value) {
-        this.loanExtended = value;
+    public void setLoanStatus(String value) {
+        this.loanStatus = value;
     }
 
 }

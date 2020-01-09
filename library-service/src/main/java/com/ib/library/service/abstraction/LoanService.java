@@ -13,8 +13,8 @@ public interface LoanService {
 
   List<Loan> findLoanByUser(Integer userId);
 
-  void returnLoan(Integer loanId);
-  void extendLoan(Integer loanId);
+  String returnLoan(Integer loanId);
+  String extendLoan(Integer loanId);
 
   List<Loan> findAllLoans();
 }

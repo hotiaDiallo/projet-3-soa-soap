@@ -3,7 +3,6 @@ package com.ib.library.model;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -22,7 +21,6 @@ public class Author implements Serializable {
   private Integer id;
   private String firstName;
   private String lastName;
-
   @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
   private Set<Work> works;
 

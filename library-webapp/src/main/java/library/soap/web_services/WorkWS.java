@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.01.05 à 06:33:16 PM CET 
+// Généré le : 2020.01.09 à 08:12:17 PM CET 
 //
 
 
@@ -11,7 +11,9 @@ package library.soap.web_services;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -26,7 +28,8 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="resume" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="summary" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="releaseDate" type="{http://www.w3.org/2001/XMLSchema}date"/>
  *         &lt;element name="author" type="{http://library/soap/web-services}authorWS"/>
  *         &lt;element name="book" type="{http://library/soap/web-services}bookWS"/>
  *       &lt;/sequence>
@@ -41,7 +44,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "workWS", propOrder = {
     "id",
     "title",
-    "resume",
+    "summary",
+    "releaseDate",
     "author",
     "book"
 })
@@ -52,7 +56,10 @@ public class WorkWS {
     @XmlElement(required = true)
     protected String title;
     @XmlElement(required = true)
-    protected String resume;
+    protected String summary;
+    @XmlElement(required = true)
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar releaseDate;
     @XmlElement(required = true)
     protected AuthorWS author;
     @XmlElement(required = true)
@@ -107,27 +114,51 @@ public class WorkWS {
     }
 
     /**
-     * Obtient la valeur de la propriété resume.
+     * Obtient la valeur de la propriété summary.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getResume() {
-        return resume;
+    public String getSummary() {
+        return summary;
     }
 
     /**
-     * Définit la valeur de la propriété resume.
+     * Définit la valeur de la propriété summary.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setResume(String value) {
-        this.resume = value;
+    public void setSummary(String value) {
+        this.summary = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété releaseDate.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getReleaseDate() {
+        return releaseDate;
+    }
+
+    /**
+     * Définit la valeur de la propriété releaseDate.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setReleaseDate(XMLGregorianCalendar value) {
+        this.releaseDate = value;
     }
 
     /**

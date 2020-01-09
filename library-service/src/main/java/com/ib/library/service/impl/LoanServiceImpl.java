@@ -66,17 +66,18 @@ public class LoanServiceImpl implements LoanService {
   }
 
   @Override
-  public void returnLoan(Integer loanId) {
+  public String returnLoan(Integer loanId) {
     Loan loan = findLoanById(loanId);
     loan.setLoanStatus(Status.STATUS_LOAN_RETURNED);
     loanRepository.save(loan);
     Book book = loan.getBook();
     book.setBookStatus(true);
     bookRepository.save(book);
+    return "Loan returned";
   }
 
   @Override
-  public void extendLoan(Integer loanId) {
+  public String extendLoan(Integer loanId) {
     Loan loan = findLoanById(loanId);
     Date returningDate = loan.getReturningDate();
     Calendar calendar = Calendar.getInstance();
@@ -86,6 +87,7 @@ public class LoanServiceImpl implements LoanService {
     loan.setReturningDate(returningDateAfterLoanExtended);
     loan.setLoanStatus(Status.STATUS_LOAN_EXTENDED);
     loanRepository.save(loan);
+    return "Loan extended";
   }
 
   @Override

@@ -1,3 +1,4 @@
+com/ib/library/repository/LibraryRepository.class
 com/ib/library/repository/BookRepository.class
 com/ib/library/repository/AuthorRepository.class
 com/ib/library/repository/UserRepository.class

@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.01.05 à 06:33:16 PM CET 
+// Généré le : 2020.01.09 à 08:12:17 PM CET 
 //
 
 
@@ -27,7 +27,6 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="esbn" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="bookStatus" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
- *         &lt;element name="work" type="{http://library/soap/web-services}workWS"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -40,8 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "bookWS", propOrder = {
     "id",
     "esbn",
-    "bookStatus",
-    "work"
+    "bookStatus"
 })
 public class BookWS {
 
@@ -50,8 +48,6 @@ public class BookWS {
     @XmlElement(required = true)
     protected String esbn;
     protected boolean bookStatus;
-    @XmlElement(required = true)
-    protected WorkWS work;
 
     /**
      * Obtient la valeur de la propriété id.
@@ -115,30 +111,6 @@ public class BookWS {
      */
     public void setBookStatus(boolean value) {
         this.bookStatus = value;
-    }
-
-    /**
-     * Obtient la valeur de la propriété work.
-     * 
-     * @return
-     *     possible object is
-     *     {@link WorkWS }
-     *     
-     */
-    public WorkWS getWork() {
-        return work;
-    }
-
-    /**
-     * Définit la valeur de la propriété work.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link WorkWS }
-     *     
-     */
-    public void setWork(WorkWS value) {
-        this.work = value;
     }
 
 }

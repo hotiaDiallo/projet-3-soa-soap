@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.01.05 à 06:33:16 PM CET 
+// Généré le : 2020.01.09 à 08:12:17 PM CET 
 //
 
 
@@ -69,6 +69,38 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetCreateLoanResponse }
+     * 
+     */
+    public GetCreateLoanResponse createGetCreateLoanResponse() {
+        return new GetCreateLoanResponse();
+    }
+
+    /**
+     * Create an instance of {@link LoanWS }
+     * 
+     */
+    public LoanWS createLoanWS() {
+        return new LoanWS();
+    }
+
+    /**
+     * Create an instance of {@link GetExtendLoanResponse }
+     * 
+     */
+    public GetExtendLoanResponse createGetExtendLoanResponse() {
+        return new GetExtendLoanResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetUserByIdResponse }
+     * 
+     */
+    public GetUserByIdResponse createGetUserByIdResponse() {
+        return new GetUserByIdResponse();
+    }
+
+    /**
      * Create an instance of {@link UserWS }
      * 
      */
@@ -77,27 +109,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetLoanByBookRequest }
+     * Create an instance of {@link GetExtendLoanRequest }
      * 
      */
-    public GetLoanByBookRequest createGetLoanByBookRequest() {
-        return new GetLoanByBookRequest();
+    public GetExtendLoanRequest createGetExtendLoanRequest() {
+        return new GetExtendLoanRequest();
     }
 
     /**
-     * Create an instance of {@link BookWS }
+     * Create an instance of {@link GetWorkByIdRequest }
      * 
      */
-    public BookWS createBookWS() {
-        return new BookWS();
+    public GetWorkByIdRequest createGetWorkByIdRequest() {
+        return new GetWorkByIdRequest();
     }
 
     /**
-     * Create an instance of {@link GetWorkByResumeRequest }
+     * Create an instance of {@link GetLoanByIdResponse }
      * 
      */
-    public GetWorkByResumeRequest createGetWorkByResumeRequest() {
-        return new GetWorkByResumeRequest();
+    public GetLoanByIdResponse createGetLoanByIdResponse() {
+        return new GetLoanByIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetReturnLoanRequest }
+     * 
+     */
+    public GetReturnLoanRequest createGetReturnLoanRequest() {
+        return new GetReturnLoanRequest();
     }
 
     /**
@@ -133,11 +173,43 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetLoanCreateRequest }
+     * Create an instance of {@link GetReturnLoanResponse }
      * 
      */
-    public GetLoanCreateRequest createGetLoanCreateRequest() {
-        return new GetLoanCreateRequest();
+    public GetReturnLoanResponse createGetReturnLoanResponse() {
+        return new GetReturnLoanResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetWorkByIdResponse }
+     * 
+     */
+    public GetWorkByIdResponse createGetWorkByIdResponse() {
+        return new GetWorkByIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetCreateLoanRequest }
+     * 
+     */
+    public GetCreateLoanRequest createGetCreateLoanRequest() {
+        return new GetCreateLoanRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetWorkBySummaryResponse }
+     * 
+     */
+    public GetWorkBySummaryResponse createGetWorkBySummaryResponse() {
+        return new GetWorkBySummaryResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetLoanByIdRequest }
+     * 
+     */
+    public GetLoanByIdRequest createGetLoanByIdRequest() {
+        return new GetLoanByIdRequest();
     }
 
     /**
@@ -149,27 +221,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetLoanCreateResponse }
+     * Create an instance of {@link GetUserByIdRequest }
      * 
      */
-    public GetLoanCreateResponse createGetLoanCreateResponse() {
-        return new GetLoanCreateResponse();
+    public GetUserByIdRequest createGetUserByIdRequest() {
+        return new GetUserByIdRequest();
     }
 
     /**
-     * Create an instance of {@link LoanWS }
+     * Create an instance of {@link GetWorkBySummaryRequest }
      * 
      */
-    public LoanWS createLoanWS() {
-        return new LoanWS();
-    }
-
-    /**
-     * Create an instance of {@link GetLoanByBookResponse }
-     * 
-     */
-    public GetLoanByBookResponse createGetLoanByBookResponse() {
-        return new GetLoanByBookResponse();
+    public GetWorkBySummaryRequest createGetWorkBySummaryRequest() {
+        return new GetWorkBySummaryRequest();
     }
 
     /**
@@ -197,11 +261,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetWorkByResumeResponse }
+     * Create an instance of {@link BookWS }
      * 
      */
-    public GetWorkByResumeResponse createGetWorkByResumeResponse() {
-        return new GetWorkByResumeResponse();
+    public BookWS createBookWS() {
+        return new BookWS();
     }
 
 }

@@ -2,12 +2,13 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.01.05 à 06:33:16 PM CET 
+// Généré le : 2020.01.09 à 08:12:17 PM CET 
 //
 
 
 package library.soap.web_services;
 
+import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -25,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="user" type="{http://library/soap/web-services}userWS"/>
+ *         &lt;element name="userId" type="{http://www.w3.org/2001/XMLSchema}integer"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,36 +37,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "user"
+    "userId"
 })
 @XmlRootElement(name = "getLoanByUserRequest")
 public class GetLoanByUserRequest {
 
     @XmlElement(required = true)
-    protected UserWS user;
+    protected BigInteger userId;
 
     /**
-     * Obtient la valeur de la propriété user.
+     * Obtient la valeur de la propriété userId.
      * 
      * @return
      *     possible object is
-     *     {@link UserWS }
+     *     {@link BigInteger }
      *     
      */
-    public UserWS getUser() {
-        return user;
+    public BigInteger getUserId() {
+        return userId;
     }
 
     /**
-     * Définit la valeur de la propriété user.
+     * Définit la valeur de la propriété userId.
      * 
      * @param value
      *     allowed object is
-     *     {@link UserWS }
+     *     {@link BigInteger }
      *     
      */
-    public void setUser(UserWS value) {
-        this.user = value;
+    public void setUserId(BigInteger value) {
+        this.userId = value;
     }
 
 }
