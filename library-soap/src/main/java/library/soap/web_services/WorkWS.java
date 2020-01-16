@@ -1,0 +1,212 @@
+//
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.3.2 
+// Voir <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
+// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
+// Généré le : 2020.01.16 à 02:58:19 PM CET 
+//
+
+
+package library.soap.web_services;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
+
+
+/**
+ * <p>Classe Java pour workWS complex type.
+ * 
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * 
+ * <pre>
+ * &lt;complexType name="workWS"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="summary" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="releaseDate" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
+ *         &lt;element name="author" type="{http://library/soap/web-services}authorWS"/&gt;
+ *         &lt;element name="book" type="{http://library/soap/web-services}bookWS"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "workWS", propOrder = {
+    "id",
+    "title",
+    "summary",
+    "releaseDate",
+    "author",
+    "book"
+})
+public class WorkWS {
+
+    @XmlElement(required = true, type = Integer.class, nillable = true)
+    protected Integer id;
+    @XmlElement(required = true)
+    protected String title;
+    @XmlElement(required = true)
+    protected String summary;
+    @XmlElement(required = true)
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar releaseDate;
+    @XmlElement(required = true)
+    protected AuthorWS author;
+    @XmlElement(required = true)
+    protected BookWS book;
+
+    /**
+     * Obtient la valeur de la propriété id.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * Définit la valeur de la propriété id.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setId(Integer value) {
+        this.id = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété title.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * Définit la valeur de la propriété title.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTitle(String value) {
+        this.title = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété summary.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSummary() {
+        return summary;
+    }
+
+    /**
+     * Définit la valeur de la propriété summary.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSummary(String value) {
+        this.summary = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété releaseDate.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getReleaseDate() {
+        return releaseDate;
+    }
+
+    /**
+     * Définit la valeur de la propriété releaseDate.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setReleaseDate(XMLGregorianCalendar value) {
+        this.releaseDate = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété author.
+     * 
+     * @return
+     *     possible object is
+     *     {@link AuthorWS }
+     *     
+     */
+    public AuthorWS getAuthor() {
+        return author;
+    }
+
+    /**
+     * Définit la valeur de la propriété author.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AuthorWS }
+     *     
+     */
+    public void setAuthor(AuthorWS value) {
+        this.author = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété book.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BookWS }
+     *     
+     */
+    public BookWS getBook() {
+        return book;
+    }
+
+    /**
+     * Définit la valeur de la propriété book.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BookWS }
+     *     
+     */
+    public void setBook(BookWS value) {
+        this.book = value;
+    }
+
+}
