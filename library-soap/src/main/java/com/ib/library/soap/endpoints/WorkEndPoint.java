@@ -5,8 +5,11 @@ import com.ib.library.model.Work;
 import com.ib.library.service.abstraction.WorkService;
 import com.ib.library.soap.Utils;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import library.soap.web_services.AuthorWS;
+import library.soap.web_services.GetWorkByAuthorAndReleaseDateRequest;
+import library.soap.web_services.GetWorkByAuthorAndReleaseDateResponse;
 import library.soap.web_services.GetWorkByAuthorRequest;
 import library.soap.web_services.GetWorkByAuthorResponse;
 import library.soap.web_services.GetWorkByIdRequest;
@@ -59,18 +62,35 @@ public class WorkEndPoint {
     GetWorkByAuthorResponse workResponse = new GetWorkByAuthorResponse();
     AuthorWS authorWS = request.getAuthor();
     Author author = new Author();
-    if(authorWS !=null){
-      BeanUtils.copyProperties(authorWS, author);
-      List<Work> works = workService.findWorkByAuthor(author);
-      List<WorkWS> listWorks = new ArrayList<>();
-      for(Work work : works){
-        WorkWS workWS = new WorkWS();
-        BeanUtils.copyProperties(work, workWS);
-        listWorks.add(workWS);
-      }
-      workResponse.getWork().add((WorkWS) listWorks);
-    }
+    BeanUtils.copyProperties(authorWS, author);
+    List<Work> works = workService.findWorkByAuthor(author);
+    workResponse.getWork().addAll(populateReturnList(works));
     return workResponse;
+  }
+
+  @PayloadRoot(namespace = Utils.NAMESPACE_URI, localPart = "getWorkByAuthorAndReleaseDateRequest")
+  @ResponsePayload
+  public GetWorkByAuthorAndReleaseDateResponse getWorkByAuthor (@RequestPayload GetWorkByAuthorAndReleaseDateRequest request){
+    GetWorkByAuthorAndReleaseDateResponse workResponse = new GetWorkByAuthorAndReleaseDateResponse();
+    Author author = new Author();
+    Date releaseDate = new Date();
+    BeanUtils.copyProperties(request.getAuthor(), author);
+    BeanUtils.copyProperties(request.getReleaseDate(), releaseDate);
+    Work work = workService.findWorkByAuthorAndReleaseDate(author, releaseDate);
+    WorkWS workWS = new WorkWS();
+    BeanUtils.copyProperties(workWS, work);
+    workResponse.setWork(workWS);
+    return workResponse;
+  }
+
+  private List<WorkWS> populateReturnList(List<Work> workList){
+    List<WorkWS> workWSList = new ArrayList<>();
+    for (Work work : workList){
+      WorkWS workWS = new WorkWS();
+      BeanUtils.copyProperties(work, workWS);
+      workWSList.add(workWS);
+    }
+    return workWSList;
   }
 }
 

@@ -4,7 +4,7 @@ import com.ib.library.model.User;
 import java.util.List;
 
 public interface UserService {
-  User login(String email, String password);
+  String login(String email, String password);
 
   List<User> findAll();
 

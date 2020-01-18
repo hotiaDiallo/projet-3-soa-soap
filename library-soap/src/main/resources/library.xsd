@@ -71,7 +71,7 @@
   <xs:element name="GetUserLoginResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="user" type="tns:userWS"/>
+        <xs:element name="response" type="xs:string"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>

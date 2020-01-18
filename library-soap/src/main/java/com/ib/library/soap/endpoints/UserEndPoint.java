@@ -39,15 +39,8 @@ public class UserEndPoint {
   @ResponsePayload
   public GetUserLoginResponse getUserLogin(@RequestPayload GetUserLoginRequest loginRequest){
     GetUserLoginResponse loginResponse = new GetUserLoginResponse();
-    User user = userService.login(loginRequest.getEmail(), loginRequest.getPassword());
-    UserWS userWS = null;
-    if(user != null){
-       userWS = new UserWS();
-       BeanUtils.copyProperties(user, userWS);
-      loginResponse.setUser(userWS);
-    }else {
-      loginResponse.setUser(null);
-    }
+    String result = userService.login(loginRequest.getEmail(), loginRequest.getPassword());
+    loginResponse.setResponse(result);
     return loginResponse;
   }
 }

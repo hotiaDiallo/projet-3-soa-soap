@@ -1,10 +1,5 @@
 package com.ib.library.service;
 
-import com.ib.library.model.Author;
-import com.ib.library.model.Library;
-import com.ib.library.model.Loan;
-import com.ib.library.model.User;
-import com.ib.library.model.Work;
 import com.ib.library.repository.AuthorRepository;
 import com.ib.library.repository.BookRepository;
 import com.ib.library.repository.LibraryRepository;
@@ -15,11 +10,6 @@ import com.ib.library.service.abstraction.BookService;
 import com.ib.library.service.abstraction.LoanService;
 import com.ib.library.service.abstraction.UserService;
 import com.ib.library.service.abstraction.WorkService;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -109,13 +99,18 @@ public class Application implements CommandLineRunner {
 //    loanService.extendLoan(3);
 //    loanService.returnLoan(3);
 
-       Calendar calendar = Calendar.getInstance();
-       Date releaseDate = calendar.getTime();
-       Work work = workRepository.findById(1).get();
-       work.setReleaseDate(releaseDate);
-       workRepository.save(work);
-       Work work1 = workService.findWorkByAuthorAndReleaseDate(authorRepository.findById(2).get(), releaseDate);
-       System.out.println("We found the work: " + work1.getTitle());
+//       Calendar calendar = Calendar.getInstance();
+//       Date releaseDate = calendar.getTime();
+//       Work work = workRepository.findById(1).get();
+//       work.setReleaseDate(releaseDate);
+//       workRepository.save(work);
+//       Work work1 = workService.findWorkByAuthorAndReleaseDate(authorRepository.findById(2).get(), releaseDate);
+//       System.out.println("We found the work: " + work1.getTitle());
+
+//    System.out.println("##########################################################");
+//    String res = loanService.extendLoan(4);
+//    System.out.println(res);
+//    System.out.println("##########################################################");
 
   }
 }

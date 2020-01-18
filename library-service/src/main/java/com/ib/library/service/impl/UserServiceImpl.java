@@ -2,6 +2,7 @@ package com.ib.library.service.impl;
 
 import com.ib.library.model.User;
 import com.ib.library.repository.UserRepository;
+import com.ib.library.service.Utils.ResultOnAction;
 import com.ib.library.service.abstraction.UserService;
 import java.util.List;
 import java.util.Optional;
@@ -22,19 +23,17 @@ public class UserServiceImpl implements UserService {
    */
 
   @Override
-  public User login(String email, String password) {
+  public String login(String email, String password) {
+    String result = null;
     User user = null;
     Optional<User> existingUser = userRepository.findByEmailAndPassword(email, password);
     if (existingUser.isPresent()) {
       user = existingUser.get();
+      result = ResultOnAction.USER_LOGGED_SUCCESS;
     } else {
-      /**
-       * Faudra penser à mettre en place une exception
-       */
-      System.out.println("User does not exist");
-      user = null;
+      result = ResultOnAction.USER_LOGGED_ERROR;
     }
-    return user;
+    return result;
   }
 
   @Override

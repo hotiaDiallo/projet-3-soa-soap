@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.3.2 
 // Voir <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.01.18 à 11:31:24 AM CET 
+// Généré le : 2020.01.18 à 08:17:12 PM CET 
 //
 
 
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="user" type="{http://library/soap/web-services}userWS"/&gt;
+ *         &lt;element name="response" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "user"
+    "response"
 })
 @XmlRootElement(name = "GetUserLoginResponse")
 public class GetUserLoginResponse {
 
     @XmlElement(required = true)
-    protected UserWS user;
+    protected String response;
 
     /**
-     * Obtient la valeur de la propriété user.
+     * Obtient la valeur de la propriété response.
      * 
      * @return
      *     possible object is
-     *     {@link UserWS }
+     *     {@link String }
      *     
      */
-    public UserWS getUser() {
-        return user;
+    public String getResponse() {
+        return response;
     }
 
     /**
-     * Définit la valeur de la propriété user.
+     * Définit la valeur de la propriété response.
      * 
      * @param value
      *     allowed object is
-     *     {@link UserWS }
+     *     {@link String }
      *     
      */
-    public void setUser(UserWS value) {
-        this.user = value;
+    public void setResponse(String value) {
+        this.response = value;
     }
 
 }

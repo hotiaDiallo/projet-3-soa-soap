@@ -5,8 +5,12 @@ import com.ib.library.service.abstraction.LoanService;
 import com.ib.library.soap.Utils;
 import library.soap.web_services.GetCreateLoanRequest;
 import library.soap.web_services.GetCreateLoanResponse;
+import library.soap.web_services.GetExtendLoanRequest;
+import library.soap.web_services.GetExtendLoanResponse;
 import library.soap.web_services.GetLoanByIdRequest;
 import library.soap.web_services.GetLoanByIdResponse;
+import library.soap.web_services.GetReturnLoanRequest;
+import library.soap.web_services.GetReturnLoanResponse;
 import library.soap.web_services.LoanWS;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,12 +41,29 @@ public class LoanEndPoint {
   }
 
 
-  @PayloadRoot(namespace = Utils.NAMESPACE_URI, localPart = "getLoanByBookRequest")
+  @PayloadRoot(namespace = Utils.NAMESPACE_URI, localPart = "getCreateLoanRequest")
   @ResponsePayload
-
   public GetCreateLoanResponse createLoan(@RequestPayload GetCreateLoanRequest loanRequest){
     GetCreateLoanResponse loanResponse = new GetCreateLoanResponse();
     String response = this.loanService.createLoan(loanRequest.getWorkId(), loanRequest.getUserId());
+    loanResponse.setResponse(response);
+    return loanResponse;
+  }
+
+  @PayloadRoot(namespace = Utils.NAMESPACE_URI, localPart = "getExtendLoanRequest")
+  @ResponsePayload
+  public GetExtendLoanResponse extendLoan(@RequestPayload GetExtendLoanRequest loanRequest){
+    GetExtendLoanResponse loanResponse = new GetExtendLoanResponse();
+    String response = this.loanService.extendLoan(loanRequest.getLoanId());
+    loanResponse.setResponse(response);
+    return loanResponse;
+  }
+
+  @PayloadRoot(namespace = Utils.NAMESPACE_URI, localPart = "getReturnLoanRequest")
+  @ResponsePayload
+  public GetReturnLoanResponse returnLoan(@RequestPayload GetReturnLoanRequest loanRequest){
+    GetReturnLoanResponse loanResponse = new GetReturnLoanResponse();
+    String response = this.loanService.returnLoan(loanRequest.getLoanId());
     loanResponse.setResponse(response);
     return loanResponse;
   }

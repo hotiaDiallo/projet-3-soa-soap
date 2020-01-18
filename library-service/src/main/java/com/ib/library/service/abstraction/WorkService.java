@@ -7,8 +7,10 @@ import java.util.List;
 
 public interface WorkService {
   Work findWorkById(Integer id);
-  Work findWorkByAuthorAndReleaseDate(Author author, Date releaseDate);
+
   List<Work> findWorkByAuthor(Author author);
+  Work findWorkByAuthorAndReleaseDate(Author author, Date releaseDate);
+
   Work findWorkByTitle(String title);
   Work findWorkByReleaseDate(Date releaseDate);
 }

@@ -38,7 +38,7 @@ public class WorkServiceImpl implements WorkService {
 
   @Override
   public Work findWorkByReleaseDate(Date releaseDate) {
-    return workRepository.findByReleaseDate(releaseDate);
+    return workRepository.findWorkByReleaseDate(releaseDate);
   }
 
 }

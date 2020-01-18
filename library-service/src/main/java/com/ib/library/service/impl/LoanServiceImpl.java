@@ -6,6 +6,7 @@ import com.ib.library.model.User;
 import com.ib.library.model.Work;
 import com.ib.library.repository.BookRepository;
 import com.ib.library.repository.LoanRepository;
+import com.ib.library.service.Utils.ResultOnAction;
 import com.ib.library.service.Utils.Status;
 import com.ib.library.service.abstraction.LoanService;
 import com.ib.library.service.abstraction.UserService;
@@ -38,6 +39,7 @@ public class LoanServiceImpl implements LoanService {
   public String createLoan(Integer workId, Integer userId) {
     User user = userService.findUserById(userId);
     Work work = workService.findWorkById(workId);
+    String result = null;
     if (work.isLoanable()){
       Loan loan = new Loan();
       Calendar calendar = Calendar.getInstance();
@@ -53,10 +55,11 @@ public class LoanServiceImpl implements LoanService {
       loanRepository.save(loan);
       book.setBookStatus(false);
       bookRepository.save(book);
-      return loan.getLoanStatus();
+      result = ResultOnAction.LOAN_CREATED_SUCCESS + " Status : "+loan.getLoanStatus();
     }else{
-      return "Error : Something went wrong";
+      result = ResultOnAction.LOAN_CREATED_ERROR;
     }
+    return  result;
   }
 
 
@@ -67,27 +70,39 @@ public class LoanServiceImpl implements LoanService {
 
   @Override
   public String returnLoan(Integer loanId) {
+    String result = null;
     Loan loan = findLoanById(loanId);
-    loan.setLoanStatus(Status.STATUS_LOAN_RETURNED);
-    loanRepository.save(loan);
-    Book book = loan.getBook();
-    book.setBookStatus(true);
-    bookRepository.save(book);
-    return loan.getLoanStatus();
+    if(loan.getLoanStatus().equals(Status.STATUS_LOAN_ACTIVATED) || loan.getLoanStatus().equals(Status.STATUS_LOAN_EXTENDED)){
+      loan.setLoanStatus(Status.STATUS_LOAN_RETURNED);
+      loanRepository.save(loan);
+      Book book = loan.getBook();
+      book.setBookStatus(true);
+      bookRepository.save(book);
+      result = ResultOnAction.LOAN_RETURNED_SUCCESS + " Status : "+loan.getLoanStatus();
+    }else {
+      result = ResultOnAction.LOAN_RETURNED_ERROR;
+    }
+    return result;
   }
 
   @Override
   public String extendLoan(Integer loanId) {
     Loan loan = findLoanById(loanId);
-    Date returningDate = loan.getReturningDate();
-    Calendar calendar = Calendar.getInstance();
-    calendar.setTime(returningDate);
-    calendar.add(calendar.MONTH,1);
-    Date returningDateAfterLoanExtended = calendar.getTime();
-    loan.setReturningDate(returningDateAfterLoanExtended);
-    loan.setLoanStatus(Status.STATUS_LOAN_EXTENDED);
-    loanRepository.save(loan);
-    return loan.getLoanStatus();
+    String result = null;
+    if(loan.getLoanStatus().equals(Status.STATUS_LOAN_ACTIVATED)){
+      Date returningDate = loan.getReturningDate();
+      Calendar calendar = Calendar.getInstance();
+      calendar.setTime(returningDate);
+      calendar.add(calendar.MONTH,1);
+      Date returningDateAfterLoanExtended = calendar.getTime();
+      loan.setReturningDate(returningDateAfterLoanExtended);
+      loan.setLoanStatus(Status.STATUS_LOAN_EXTENDED);
+      loanRepository.save(loan);
+      result = ResultOnAction.LOAN_EXTENDED_SUCCESS + " Status : "+loan.getLoanStatus();
+    }else {
+      result = ResultOnAction.LOAN_EXTENDED_ERROR;
+    }
+    return result;
   }
 
   @Override
