@@ -10,8 +10,11 @@ package library.soap.web_services;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -24,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="releaseDate" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -35,27 +38,37 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "id"
+    "releaseDate"
 })
-@XmlRootElement(name = "getWorkByIdRequest")
-public class GetWorkByIdRequest {
+@XmlRootElement(name = "getWorkByReleaseDateRequest")
+public class GetWorkByReleaseDateRequest {
 
-    protected int id;
+    @XmlElement(required = true)
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar releaseDate;
 
     /**
-     * Obtient la valeur de la propriété id.
+     * Obtient la valeur de la propriété releaseDate.
      * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
-    public int getId() {
-        return id;
+    public XMLGregorianCalendar getReleaseDate() {
+        return releaseDate;
     }
 
     /**
-     * Définit la valeur de la propriété id.
+     * Définit la valeur de la propriété releaseDate.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
-    public void setId(int value) {
-        this.id = value;
+    public void setReleaseDate(XMLGregorianCalendar value) {
+        this.releaseDate = value;
     }
 
 }

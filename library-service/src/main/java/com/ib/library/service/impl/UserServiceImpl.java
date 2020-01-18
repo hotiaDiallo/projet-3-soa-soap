@@ -23,16 +23,18 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public User login(String email, String password) {
+    User user = null;
     Optional<User> existingUser = userRepository.findByEmailAndPassword(email, password);
     if (existingUser.isPresent()) {
-      return existingUser.get();
+      user = existingUser.get();
     } else {
       /**
        * Faudra penser à mettre en place une exception
        */
       System.out.println("User does not exist");
-      return null;
+      user = null;
     }
+    return user;
   }
 
   @Override

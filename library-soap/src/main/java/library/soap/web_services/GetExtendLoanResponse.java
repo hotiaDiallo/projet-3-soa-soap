@@ -2,13 +2,12 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.3.2 
 // Voir <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.01.16 à 02:58:19 PM CET 
+// Généré le : 2020.01.18 à 11:31:24 AM CET 
 //
 
 
 package library.soap.web_services;
 
-import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -26,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="response" type="{http://www.w3.org/2001/XMLSchema}integer"/&gt;
+ *         &lt;element name="response" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -43,17 +42,17 @@ import javax.xml.bind.annotation.XmlType;
 public class GetExtendLoanResponse {
 
     @XmlElement(required = true)
-    protected BigInteger response;
+    protected String response;
 
     /**
      * Obtient la valeur de la propriété response.
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getResponse() {
+    public String getResponse() {
         return response;
     }
 
@@ -62,10 +61,10 @@ public class GetExtendLoanResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setResponse(BigInteger value) {
+    public void setResponse(String value) {
         this.response = value;
     }
 

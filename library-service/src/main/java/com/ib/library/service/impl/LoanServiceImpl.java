@@ -53,7 +53,7 @@ public class LoanServiceImpl implements LoanService {
       loanRepository.save(loan);
       book.setBookStatus(false);
       bookRepository.save(book);
-      return "Success : loan created";
+      return loan.getLoanStatus();
     }else{
       return "Error : Something went wrong";
     }
@@ -73,7 +73,7 @@ public class LoanServiceImpl implements LoanService {
     Book book = loan.getBook();
     book.setBookStatus(true);
     bookRepository.save(book);
-    return "Loan returned";
+    return loan.getLoanStatus();
   }
 
   @Override
@@ -87,7 +87,7 @@ public class LoanServiceImpl implements LoanService {
     loan.setReturningDate(returningDateAfterLoanExtended);
     loan.setLoanStatus(Status.STATUS_LOAN_EXTENDED);
     loanRepository.save(loan);
-    return "Loan extended";
+    return loan.getLoanStatus();
   }
 
   @Override

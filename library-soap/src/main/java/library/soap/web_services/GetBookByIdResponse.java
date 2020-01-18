@@ -10,6 +10,7 @@ package library.soap.web_services;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -24,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="book" type="{http://library/soap/web-services}bookWS"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -35,27 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "id"
+    "book"
 })
-@XmlRootElement(name = "getWorkByIdRequest")
-public class GetWorkByIdRequest {
+@XmlRootElement(name = "getBookByIdResponse")
+public class GetBookByIdResponse {
 
-    protected int id;
+    @XmlElement(required = true)
+    protected BookWS book;
 
     /**
-     * Obtient la valeur de la propriété id.
+     * Obtient la valeur de la propriété book.
      * 
+     * @return
+     *     possible object is
+     *     {@link BookWS }
+     *     
      */
-    public int getId() {
-        return id;
+    public BookWS getBook() {
+        return book;
     }
 
     /**
-     * Définit la valeur de la propriété id.
+     * Définit la valeur de la propriété book.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link BookWS }
+     *     
      */
-    public void setId(int value) {
-        this.id = value;
+    public void setBook(BookWS value) {
+        this.book = value;
     }
 
 }

@@ -12,7 +12,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -25,8 +27,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="email" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="author" type="{http://library/soap/web-services}authorWS"/&gt;
+ *         &lt;element name="releaseDate" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -37,63 +39,64 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "email",
-    "password"
+    "author",
+    "releaseDate"
 })
-@XmlRootElement(name = "GetUserLoginRequest")
-public class GetUserLoginRequest {
+@XmlRootElement(name = "getWorkByAuthorAndReleaseDateRequest")
+public class GetWorkByAuthorAndReleaseDateRequest {
 
     @XmlElement(required = true)
-    protected String email;
+    protected AuthorWS author;
     @XmlElement(required = true)
-    protected String password;
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar releaseDate;
 
     /**
-     * Obtient la valeur de la propriété email.
+     * Obtient la valeur de la propriété author.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link AuthorWS }
      *     
      */
-    public String getEmail() {
-        return email;
+    public AuthorWS getAuthor() {
+        return author;
     }
 
     /**
-     * Définit la valeur de la propriété email.
+     * Définit la valeur de la propriété author.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link AuthorWS }
      *     
      */
-    public void setEmail(String value) {
-        this.email = value;
+    public void setAuthor(AuthorWS value) {
+        this.author = value;
     }
 
     /**
-     * Obtient la valeur de la propriété password.
+     * Obtient la valeur de la propriété releaseDate.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public String getPassword() {
-        return password;
+    public XMLGregorianCalendar getReleaseDate() {
+        return releaseDate;
     }
 
     /**
-     * Définit la valeur de la propriété password.
+     * Définit la valeur de la propriété releaseDate.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setPassword(String value) {
-        this.password = value;
+    public void setReleaseDate(XMLGregorianCalendar value) {
+        this.releaseDate = value;
     }
 
 }

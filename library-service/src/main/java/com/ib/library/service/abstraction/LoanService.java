@@ -1,8 +1,6 @@
 package com.ib.library.service.abstraction;
 
 import com.ib.library.model.Loan;
-import com.ib.library.model.User;
-import com.ib.library.model.Work;
 import java.util.List;
 
 public interface LoanService {

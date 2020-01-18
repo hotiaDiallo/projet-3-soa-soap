@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.3.2 
 // Voir <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.01.16 à 02:58:19 PM CET 
+// Généré le : 2020.01.18 à 11:31:24 AM CET 
 //
 
 
@@ -77,6 +77,54 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetAuthorByIdRequest }
+     * 
+     */
+    public GetAuthorByIdRequest createGetAuthorByIdRequest() {
+        return new GetAuthorByIdRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetAuthorByIdResponse }
+     * 
+     */
+    public GetAuthorByIdResponse createGetAuthorByIdResponse() {
+        return new GetAuthorByIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link AuthorWS }
+     * 
+     */
+    public AuthorWS createAuthorWS() {
+        return new AuthorWS();
+    }
+
+    /**
+     * Create an instance of {@link GetBookByIdRequest }
+     * 
+     */
+    public GetBookByIdRequest createGetBookByIdRequest() {
+        return new GetBookByIdRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetBookByIdResponse }
+     * 
+     */
+    public GetBookByIdResponse createGetBookByIdResponse() {
+        return new GetBookByIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link BookWS }
+     * 
+     */
+    public BookWS createBookWS() {
+        return new BookWS();
+    }
+
+    /**
      * Create an instance of {@link GetWorkByIdRequest }
      * 
      */
@@ -125,14 +173,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AuthorWS }
-     * 
-     */
-    public AuthorWS createAuthorWS() {
-        return new AuthorWS();
-    }
-
-    /**
      * Create an instance of {@link GetWorkByAuthorResponse }
      * 
      */
@@ -141,19 +181,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetWorkBySummaryRequest }
+     * Create an instance of {@link GetWorkByReleaseDateRequest }
      * 
      */
-    public GetWorkBySummaryRequest createGetWorkBySummaryRequest() {
-        return new GetWorkBySummaryRequest();
+    public GetWorkByReleaseDateRequest createGetWorkByReleaseDateRequest() {
+        return new GetWorkByReleaseDateRequest();
     }
 
     /**
-     * Create an instance of {@link GetWorkBySummaryResponse }
+     * Create an instance of {@link GetWorkByReleaseDateResponse }
      * 
      */
-    public GetWorkBySummaryResponse createGetWorkBySummaryResponse() {
-        return new GetWorkBySummaryResponse();
+    public GetWorkByReleaseDateResponse createGetWorkByReleaseDateResponse() {
+        return new GetWorkByReleaseDateResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetWorkByAuthorAndReleaseDateRequest }
+     * 
+     */
+    public GetWorkByAuthorAndReleaseDateRequest createGetWorkByAuthorAndReleaseDateRequest() {
+        return new GetWorkByAuthorAndReleaseDateRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetWorkByAuthorAndReleaseDateResponse }
+     * 
+     */
+    public GetWorkByAuthorAndReleaseDateResponse createGetWorkByAuthorAndReleaseDateResponse() {
+        return new GetWorkByAuthorAndReleaseDateResponse();
     }
 
     /**
@@ -258,14 +314,6 @@ public class ObjectFactory {
      */
     public GetLoanByUserResponse createGetLoanByUserResponse() {
         return new GetLoanByUserResponse();
-    }
-
-    /**
-     * Create an instance of {@link BookWS }
-     * 
-     */
-    public BookWS createBookWS() {
-        return new BookWS();
     }
 
 }

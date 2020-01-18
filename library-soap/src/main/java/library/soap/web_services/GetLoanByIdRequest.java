@@ -2,16 +2,14 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.3.2 
 // Voir <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.01.16 à 02:58:19 PM CET 
+// Généré le : 2020.01.18 à 11:31:24 AM CET 
 //
 
 
 package library.soap.web_services;
 
-import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -26,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}integer"/&gt;
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -42,30 +40,21 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "getLoanByIdRequest")
 public class GetLoanByIdRequest {
 
-    @XmlElement(required = true)
-    protected BigInteger id;
+    protected int id;
 
     /**
      * Obtient la valeur de la propriété id.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
      */
-    public BigInteger getId() {
+    public int getId() {
         return id;
     }
 
     /**
      * Définit la valeur de la propriété id.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
      */
-    public void setId(BigInteger value) {
+    public void setId(int value) {
         this.id = value;
     }
 

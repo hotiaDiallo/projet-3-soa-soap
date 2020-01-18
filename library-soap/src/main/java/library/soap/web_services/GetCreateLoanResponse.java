@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.3.2 
 // Voir <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.01.16 à 02:58:19 PM CET 
+// Généré le : 2020.01.18 à 11:31:24 AM CET 
 //
 
 
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="loan" type="{http://library/soap/web-services}loanWS"/&gt;
+ *         &lt;element name="response" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "loan"
+    "response"
 })
 @XmlRootElement(name = "getCreateLoanResponse")
 public class GetCreateLoanResponse {
 
     @XmlElement(required = true)
-    protected LoanWS loan;
+    protected String response;
 
     /**
-     * Obtient la valeur de la propriété loan.
+     * Obtient la valeur de la propriété response.
      * 
      * @return
      *     possible object is
-     *     {@link LoanWS }
+     *     {@link String }
      *     
      */
-    public LoanWS getLoan() {
-        return loan;
+    public String getResponse() {
+        return response;
     }
 
     /**
-     * Définit la valeur de la propriété loan.
+     * Définit la valeur de la propriété response.
      * 
      * @param value
      *     allowed object is
-     *     {@link LoanWS }
+     *     {@link String }
      *     
      */
-    public void setLoan(LoanWS value) {
-        this.loan = value;
+    public void setResponse(String value) {
+        this.response = value;
     }
 
 }

@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.3.2 
 // Voir <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.01.16 à 02:58:19 PM CET 
+// Généré le : 2020.01.18 à 11:31:24 AM CET 
 //
 
 
@@ -31,7 +31,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="summary" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="releaseDate" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
  *         &lt;element name="author" type="{http://library/soap/web-services}authorWS"/&gt;
- *         &lt;element name="book" type="{http://library/soap/web-services}bookWS"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -46,8 +45,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "title",
     "summary",
     "releaseDate",
-    "author",
-    "book"
+    "author"
 })
 public class WorkWS {
 
@@ -62,8 +60,6 @@ public class WorkWS {
     protected XMLGregorianCalendar releaseDate;
     @XmlElement(required = true)
     protected AuthorWS author;
-    @XmlElement(required = true)
-    protected BookWS book;
 
     /**
      * Obtient la valeur de la propriété id.
@@ -183,30 +179,6 @@ public class WorkWS {
      */
     public void setAuthor(AuthorWS value) {
         this.author = value;
-    }
-
-    /**
-     * Obtient la valeur de la propriété book.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BookWS }
-     *     
-     */
-    public BookWS getBook() {
-        return book;
-    }
-
-    /**
-     * Définit la valeur de la propriété book.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BookWS }
-     *     
-     */
-    public void setBook(BookWS value) {
-        this.book = value;
     }
 
 }
