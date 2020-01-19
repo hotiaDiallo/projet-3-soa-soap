@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.3.2 
 // Voir <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.01.18 à 08:17:12 PM CET 
+// Généré le : 2020.01.19 à 09:05:15 PM CET 
 //
 
 
@@ -26,6 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence&gt;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="firstName" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="lastName" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="work" type="{http://library/soap/web-services}workWS"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -39,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "authorWS", propOrder = {
     "id",
     "firstName",
+    "lastName",
     "work"
 })
 public class AuthorWS {
@@ -47,6 +49,8 @@ public class AuthorWS {
     protected Integer id;
     @XmlElement(required = true)
     protected String firstName;
+    @XmlElement(required = true)
+    protected String lastName;
     @XmlElement(required = true)
     protected WorkWS work;
 
@@ -96,6 +100,30 @@ public class AuthorWS {
      */
     public void setFirstName(String value) {
         this.firstName = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété lastName.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * Définit la valeur de la propriété lastName.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setLastName(String value) {
+        this.lastName = value;
     }
 
     /**

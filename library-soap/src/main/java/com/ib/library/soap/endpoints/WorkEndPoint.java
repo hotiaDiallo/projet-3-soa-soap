@@ -1,19 +1,17 @@
 package com.ib.library.soap.endpoints;
 
-import com.ib.library.model.Author;
 import com.ib.library.model.Work;
 import com.ib.library.service.abstraction.WorkService;
 import com.ib.library.soap.Utils;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import library.soap.web_services.AuthorWS;
-import library.soap.web_services.GetWorkByAuthorAndReleaseDateRequest;
-import library.soap.web_services.GetWorkByAuthorAndReleaseDateResponse;
 import library.soap.web_services.GetWorkByAuthorRequest;
 import library.soap.web_services.GetWorkByAuthorResponse;
 import library.soap.web_services.GetWorkByIdRequest;
 import library.soap.web_services.GetWorkByIdResponse;
+import library.soap.web_services.GetWorkByReleaseDateRequest;
+import library.soap.web_services.GetWorkByReleaseDateResponse;
 import library.soap.web_services.GetWorkByTitleRequest;
 import library.soap.web_services.GetWorkByTitleResponse;
 import library.soap.web_services.WorkWS;
@@ -49,10 +47,8 @@ public class WorkEndPoint {
   @ResponsePayload
   public GetWorkByTitleResponse getWorkByTitleRequest (@RequestPayload GetWorkByTitleRequest request){
     GetWorkByTitleResponse workResponse = new GetWorkByTitleResponse();
-    Work work = workService.findWorkByTitle(request.getTitle());
-    WorkWS workWS = new WorkWS();
-    BeanUtils.copyProperties(work, workWS);
-    workResponse.setWork(workWS);
+    List<Work> works = workService.findWorkByTitle(request.getTitle());
+    workResponse.getWork().addAll(populateReturnList(works));
     return workResponse;
   }
 
@@ -60,28 +56,37 @@ public class WorkEndPoint {
   @ResponsePayload
   public GetWorkByAuthorResponse getWorkByAuthor (@RequestPayload GetWorkByAuthorRequest request){
     GetWorkByAuthorResponse workResponse = new GetWorkByAuthorResponse();
-    AuthorWS authorWS = request.getAuthor();
-    Author author = new Author();
-    BeanUtils.copyProperties(authorWS, author);
-    List<Work> works = workService.findWorkByAuthor(author);
+    int id = request.getId();
+    List<Work> works = workService.findWorkByAuthor_Id(id);
     workResponse.getWork().addAll(populateReturnList(works));
     return workResponse;
   }
 
-  @PayloadRoot(namespace = Utils.NAMESPACE_URI, localPart = "getWorkByAuthorAndReleaseDateRequest")
+  @PayloadRoot(namespace = Utils.NAMESPACE_URI, localPart = "getWorkByReleaseDateRequest")
   @ResponsePayload
-  public GetWorkByAuthorAndReleaseDateResponse getWorkByAuthor (@RequestPayload GetWorkByAuthorAndReleaseDateRequest request){
-    GetWorkByAuthorAndReleaseDateResponse workResponse = new GetWorkByAuthorAndReleaseDateResponse();
-    Author author = new Author();
-    Date releaseDate = new Date();
-    BeanUtils.copyProperties(request.getAuthor(), author);
-    BeanUtils.copyProperties(request.getReleaseDate(), releaseDate);
-    Work work = workService.findWorkByAuthorAndReleaseDate(author, releaseDate);
-    WorkWS workWS = new WorkWS();
-    BeanUtils.copyProperties(workWS, work);
-    workResponse.setWork(workWS);
+  public GetWorkByReleaseDateResponse getWorkByReleaseDate (@RequestPayload GetWorkByReleaseDateRequest request){
+    GetWorkByReleaseDateResponse workResponse = new GetWorkByReleaseDateResponse();
+    Date releaseDate = null;
+    BeanUtils.copyProperties(releaseDate, request.getReleaseDate());
+    List<Work> works = workService.findWorkByReleaseDate(releaseDate);
+    workResponse.getWork().addAll(populateReturnList(works));
     return workResponse;
   }
+
+//  @PayloadRoot(namespace = Utils.NAMESPACE_URI, localPart = "getWorkByAuthorAndReleaseDateRequest")
+//  @ResponsePayload
+//  public GetWorkByAuthorAndReleaseDateResponse getWorkByAuthor (@RequestPayload GetWorkByAuthorAndReleaseDateRequest request){
+//    GetWorkByAuthorAndReleaseDateResponse workResponse = new GetWorkByAuthorAndReleaseDateResponse();
+//    Author author = new Author();
+//    Date releaseDate = new Date();
+//    BeanUtils.copyProperties(request.getAuthor(), author);
+//    BeanUtils.copyProperties(request.getReleaseDate(), releaseDate);
+//    Work work = workService.findWorkByAuthorAndReleaseDate(author, releaseDate);
+//    WorkWS workWS = new WorkWS();
+//    BeanUtils.copyProperties(workWS, work);
+//    workResponse.setWork(workWS);
+//    return workResponse;
+//  }
 
   private List<WorkWS> populateReturnList(List<Work> workList){
     List<WorkWS> workWSList = new ArrayList<>();

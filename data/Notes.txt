@@ -1,0 +1,7 @@
+Quelques améliorations:
+
+-recherche par titre  : ignorer la case - voir la requete avec contains
+
+- Un service qui permet de connaitre le nombre d'exemplaires disponibles pour un ouvrage;
+
+- connaitre un pret par utilisateur ( id )

@@ -107,10 +107,9 @@ public class Application implements CommandLineRunner {
 //       Work work1 = workService.findWorkByAuthorAndReleaseDate(authorRepository.findById(2).get(), releaseDate);
 //       System.out.println("We found the work: " + work1.getTitle());
 
-//    System.out.println("##########################################################");
-//    String res = loanService.extendLoan(4);
-//    System.out.println(res);
-//    System.out.println("##########################################################");
+    System.out.println("##########################################################");
+    System.out.println(workService.findWorkByAuthor_Id(1));
+    System.out.println("##########################################################");
 
   }
 }

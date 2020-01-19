@@ -9,8 +9,9 @@ public interface WorkService {
   Work findWorkById(Integer id);
 
   List<Work> findWorkByAuthor(Author author);
-  Work findWorkByAuthorAndReleaseDate(Author author, Date releaseDate);
+  List<Work> findWorkByAuthor_Id(Integer id);
+  Work findWorkByAuthorAndReleaseDate(Integer id, Date releaseDate);
 
-  Work findWorkByTitle(String title);
-  Work findWorkByReleaseDate(Date releaseDate);
+  List<Work> findWorkByTitle(String title);
+  List<Work> findWorkByReleaseDate(Date releaseDate);
 }

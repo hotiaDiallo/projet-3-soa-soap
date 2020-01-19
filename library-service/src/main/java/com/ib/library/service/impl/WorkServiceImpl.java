@@ -21,8 +21,8 @@ public class WorkServiceImpl implements WorkService {
   }
 
   @Override
-  public Work findWorkByAuthorAndReleaseDate(Author author, Date releaseDate) {
-    return workRepository.findWorkByAuthorAndReleaseDate(author, releaseDate);
+  public Work findWorkByAuthorAndReleaseDate(Integer id, Date releaseDate) {
+    return workRepository.findWorkByAuthor_IdAndReleaseDate(id, releaseDate);
   }
 
   @Override
@@ -32,13 +32,21 @@ public class WorkServiceImpl implements WorkService {
   }
 
   @Override
-  public Work findWorkByTitle(String title) {
-    return workRepository.findWorkByTitle(title);
+  public List<Work> findWorkByAuthor_Id(Integer id) {
+    List<Work> works = workRepository.findWorkByAuthor_Id(id);
+    return works;
   }
 
   @Override
-  public Work findWorkByReleaseDate(Date releaseDate) {
-    return workRepository.findWorkByReleaseDate(releaseDate);
+  public List<Work> findWorkByTitle(String title) {
+    List<Work> works = workRepository.findWorkByTitle(title);
+    return works;
+  }
+
+  @Override
+  public List<Work> findWorkByReleaseDate(Date releaseDate) {
+    List<Work> works = workRepository.findWorkByReleaseDate(releaseDate);
+    return works;
   }
 
 }

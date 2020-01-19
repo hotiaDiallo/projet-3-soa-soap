@@ -1,11 +1,8 @@
 package com.ib.library.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -52,6 +49,19 @@ public class Work implements Serializable {
       }
     }
     return status;
+  }
+
+  public int availableBooksSize(){
+    int result=0;
+    for(Book book : books){
+      if(book.getBookStatus()==true){
+        result++;
+        break;
+      }else{
+        continue;
+      }
+    }
+    return result;
   }
 
   public Book getAvailableBook(List<Book> books){
