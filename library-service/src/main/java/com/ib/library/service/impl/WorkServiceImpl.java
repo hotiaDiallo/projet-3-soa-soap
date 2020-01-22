@@ -39,7 +39,7 @@ public class WorkServiceImpl implements WorkService {
 
   @Override
   public List<Work> findWorkByTitle(String title) {
-    List<Work> works = workRepository.findWorkByTitle(title);
+    List<Work> works = workRepository.findWorkByTitleContainingIgnoreCase(title);
     return works;
   }
 

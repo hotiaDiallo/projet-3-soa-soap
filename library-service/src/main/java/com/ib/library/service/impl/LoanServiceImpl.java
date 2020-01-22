@@ -65,7 +65,7 @@ public class LoanServiceImpl implements LoanService {
 
   @Override
   public List<Loan> findLoanByUser(Integer userId) {
-    return loanRepository.findLoanByUserId(userId);
+    return loanRepository.findLoanByUser_Id(userId);
   }
 
   @Override

@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 public interface WorkRepository extends CrudRepository<Work, Integer> {
-  List<Work> findWorkByTitle(String title);
+  List<Work> findWorkByTitleContainingIgnoreCase(String title);
   List<Work> findWorkByReleaseDate(Date releaseDate);
   List<Work> findWorkByAuthor(Author author);
   Work findWorkByAuthor_IdAndReleaseDate(Integer id, Date releaseDate);

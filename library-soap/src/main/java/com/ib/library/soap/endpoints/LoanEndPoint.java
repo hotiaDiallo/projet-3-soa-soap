@@ -3,12 +3,16 @@ package com.ib.library.soap.endpoints;
 import com.ib.library.model.Loan;
 import com.ib.library.service.abstraction.LoanService;
 import com.ib.library.soap.Utils;
+import java.util.ArrayList;
+import java.util.List;
 import library.soap.web_services.GetCreateLoanRequest;
 import library.soap.web_services.GetCreateLoanResponse;
 import library.soap.web_services.GetExtendLoanRequest;
 import library.soap.web_services.GetExtendLoanResponse;
 import library.soap.web_services.GetLoanByIdRequest;
 import library.soap.web_services.GetLoanByIdResponse;
+import library.soap.web_services.GetLoanByUserRequest;
+import library.soap.web_services.GetLoanByUserResponse;
 import library.soap.web_services.GetReturnLoanRequest;
 import library.soap.web_services.GetReturnLoanResponse;
 import library.soap.web_services.LoanWS;
@@ -40,6 +44,15 @@ public class LoanEndPoint {
     return loanByIdResponse;
   }
 
+  @PayloadRoot(namespace = Utils.NAMESPACE_URI, localPart = "getLoanByUserRequest")
+  @ResponsePayload
+  public GetLoanByUserResponse getLoanByUser (@RequestPayload GetLoanByUserRequest request){
+    GetLoanByUserResponse loanByUserResponse = new GetLoanByUserResponse();
+    List<Loan> loans = loanService.findLoanByUser(request.getUserId());
+    loanByUserResponse.getLoan().addAll(populateReturnList(loans));
+    return loanByUserResponse;
+  }
+
 
   @PayloadRoot(namespace = Utils.NAMESPACE_URI, localPart = "getCreateLoanRequest")
   @ResponsePayload
@@ -66,6 +79,16 @@ public class LoanEndPoint {
     String response = this.loanService.returnLoan(loanRequest.getLoanId());
     loanResponse.setResponse(response);
     return loanResponse;
+  }
+
+  private List<LoanWS> populateReturnList(List<Loan> loanList){
+    List<LoanWS> loanWSList = new ArrayList<>();
+    for (Loan loan : loanList){
+      LoanWS loanWS = new LoanWS();
+      BeanUtils.copyProperties(loan, loanWS);
+      loanWSList.add(loanWS);
+    }
+    return loanWSList;
   }
 
 }

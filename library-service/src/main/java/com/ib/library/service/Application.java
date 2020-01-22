@@ -1,5 +1,6 @@
 package com.ib.library.service;
 
+import com.ib.library.model.Loan;
 import com.ib.library.repository.AuthorRepository;
 import com.ib.library.repository.BookRepository;
 import com.ib.library.repository.LibraryRepository;
@@ -10,6 +11,7 @@ import com.ib.library.service.abstraction.BookService;
 import com.ib.library.service.abstraction.LoanService;
 import com.ib.library.service.abstraction.UserService;
 import com.ib.library.service.abstraction.WorkService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -108,7 +110,13 @@ public class Application implements CommandLineRunner {
 //       System.out.println("We found the work: " + work1.getTitle());
 
     System.out.println("##########################################################");
-    System.out.println(workService.findWorkByAuthor_Id(1));
+//    List<Work> works = workService.findWorkByTitle("title2");
+//    for (Work work : works){
+//      System.out.println(work.availableBooksSize());
+//    }
+
+    List<Loan> loans = loanService.findLoanByUser(1);
+    System.out.println(loans);
     System.out.println("##########################################################");
 
   }
