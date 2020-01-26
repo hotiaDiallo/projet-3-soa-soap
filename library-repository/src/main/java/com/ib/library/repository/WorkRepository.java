@@ -13,10 +13,5 @@ public interface WorkRepository extends CrudRepository<Work, Integer> {
   Work findWorkByAuthor_IdAndReleaseDate(Integer id, Date releaseDate);
   List<Work> findWorkByAuthor_Id(Integer id);
 
-//  @Query("SELECT * from work w WHERE w.author_id = :id")
-//  List<Work> findWorkByAuthorId(@Param("id") Integer id);
-
-//  Work findByReleaseDate(Date releaseDate);
-//  @Query("SELECT * from work w WHERE w.author_id = :id and release_date = :releaseDate")
-//  Work findWorkByAuthorIdAndReleaseDate(@Param("id") Integer id, @Param("releaseDate") Date releaseDate);
+  List<Work> findWorkByAuthor_NameContainingIgnoreCase(String name);
 }

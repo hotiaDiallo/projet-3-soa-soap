@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="loan" type="{http://library/soap/web-services}loanWS" maxOccurs="unbounded"/&gt;
+ *         &lt;element name="work" type="{http://library/soap/web-services}workWS" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -38,41 +38,41 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "loan"
+    "work"
 })
-@XmlRootElement(name = "getLoanByUserResponse")
-public class GetLoanByUserResponse {
+@XmlRootElement(name = "getWorkByAuthorNameResponse")
+public class GetWorkByAuthorNameResponse {
 
     @XmlElement(required = true, nillable = true)
-    protected List<LoanWS> loan;
+    protected List<WorkWS> work;
 
     /**
-     * Gets the value of the loan property.
+     * Gets the value of the work property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the loan property.
+     * This is why there is not a <CODE>set</CODE> method for the work property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getLoan().add(newItem);
+     *    getWork().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link LoanWS }
+     * {@link WorkWS }
      * 
      * 
      */
-    public List<LoanWS> getLoan() {
-        if (loan == null) {
-            loan = new ArrayList<LoanWS>();
+    public List<WorkWS> getWork() {
+        if (work == null) {
+            work = new ArrayList<WorkWS>();
         }
-        return this.loan;
+        return this.work;
     }
 
 }

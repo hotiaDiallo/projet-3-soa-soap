@@ -6,6 +6,8 @@ import com.ib.library.soap.Utils;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import library.soap.web_services.GetWorkByAuthorNameRequest;
+import library.soap.web_services.GetWorkByAuthorNameResponse;
 import library.soap.web_services.GetWorkByAuthorRequest;
 import library.soap.web_services.GetWorkByAuthorResponse;
 import library.soap.web_services.GetWorkByIdRequest;
@@ -45,9 +47,19 @@ public class WorkEndPoint {
 
   @PayloadRoot(namespace = Utils.NAMESPACE_URI, localPart = "getWorkByTitleRequest")
   @ResponsePayload
-  public GetWorkByTitleResponse getWorkByTitleRequest (@RequestPayload GetWorkByTitleRequest request){
+  public GetWorkByTitleResponse getWorkByTitle (@RequestPayload GetWorkByTitleRequest request){
     GetWorkByTitleResponse workResponse = new GetWorkByTitleResponse();
     List<Work> works = workService.findWorkByTitle(request.getTitle());
+    workResponse.getWork().addAll(populateReturnList(works));
+    return workResponse;
+  }
+
+  @PayloadRoot(namespace = Utils.NAMESPACE_URI, localPart = "getWorkByAuthorNameRequest")
+  @ResponsePayload
+  public GetWorkByAuthorNameResponse getWorkByAuthorName (@RequestPayload GetWorkByAuthorNameRequest request){
+    GetWorkByAuthorNameResponse workResponse = new GetWorkByAuthorNameResponse();
+    String name = request.getName();
+    List<Work> works = workService.findWorkByAuthorName(name);
     workResponse.getWork().addAll(populateReturnList(works));
     return workResponse;
   }

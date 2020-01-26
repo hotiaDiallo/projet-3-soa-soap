@@ -14,4 +14,6 @@ public interface WorkService {
 
   List<Work> findWorkByTitle(String title);
   List<Work> findWorkByReleaseDate(Date releaseDate);
+
+  List<Work> findWorkByAuthorName(String name);
 }

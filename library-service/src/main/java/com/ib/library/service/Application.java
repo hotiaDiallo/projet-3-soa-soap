@@ -1,6 +1,6 @@
 package com.ib.library.service;
 
-import com.ib.library.model.Loan;
+import com.ib.library.model.Work;
 import com.ib.library.repository.AuthorRepository;
 import com.ib.library.repository.BookRepository;
 import com.ib.library.repository.LibraryRepository;
@@ -115,8 +115,9 @@ public class Application implements CommandLineRunner {
 //      System.out.println(work.availableBooksSize());
 //    }
 
-    List<Loan> loans = loanService.findLoanByUser(1);
-    System.out.println(loans);
+    //List<Loan> loans = loanService.findLoanByUser(1);
+    List<Work> works = workService.findWorkByAuthorName("ibrahima diallo");
+    System.out.println(works);
     System.out.println("##########################################################");
 
   }

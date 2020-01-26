@@ -18,6 +18,7 @@
   <xs:complexType name="authorWS">
     <xs:sequence>
       <xs:element name="id" type="xs:int" nillable="true"/>
+      <xs:element name="name" type="xs:string"/>
       <xs:element name="firstName" type="xs:string"/>
       <xs:element name="lastName" type="xs:string"/>
       <xs:element name="work" type="tns:workWS"/>
@@ -172,6 +173,23 @@
   </xs:element>
 
   <xs:element name="getWorkByAuthorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="work" type="tns:workWS" maxOccurs="unbounded" nillable="true"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!--============== GET WORK BY AUTHOR NAME=================== -->
+  <xs:element name="getWorkByAuthorNameRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="name" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="getWorkByAuthorNameResponse">
     <xs:complexType>
       <xs:sequence>
         <xs:element name="work" type="tns:workWS" maxOccurs="unbounded" nillable="true"/>
