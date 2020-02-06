@@ -116,8 +116,11 @@ public class Application implements CommandLineRunner {
 //    }
 
     //List<Loan> loans = loanService.findLoanByUser(1);
-    List<Work> works = workService.findWorkByAuthorName("ibrahima diallo");
-    System.out.println(works);
+    List<Work> works = workService.findWorkByTitle("tilte2");
+    for (Work work : works){
+      System.out.println(work.getAvailableBooksSize());
+    }
+    System.out.println();
     System.out.println("##########################################################");
 
   }

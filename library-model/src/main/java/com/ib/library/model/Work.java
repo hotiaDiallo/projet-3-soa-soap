@@ -51,12 +51,11 @@ public class Work implements Serializable {
     return status;
   }
 
-  public int availableBooksSize(){
+  public int getAvailableBooksSize(){
     int result=0;
     for(Book book : books){
       if(book.getBookStatus()==true){
         result++;
-        break;
       }else{
         continue;
       }

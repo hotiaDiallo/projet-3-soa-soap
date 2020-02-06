@@ -3,6 +3,8 @@ package com.ib.library.soap.endpoints;
 import com.ib.library.model.User;
 import com.ib.library.service.abstraction.UserService;
 import com.ib.library.soap.Utils;
+import library.soap.web_services.GetUserByEmailRequest;
+import library.soap.web_services.GetUserByEmailResponse;
 import library.soap.web_services.GetUserByIdRequest;
 import library.soap.web_services.GetUserByIdResponse;
 import library.soap.web_services.GetUserLoginRequest;
@@ -33,6 +35,20 @@ public class UserEndPoint {
     }
     userByIdResponse.setUser(userWS);
     return userByIdResponse;
+  }
+
+  @PayloadRoot(namespace = Utils.NAMESPACE_URI, localPart = "getUserByEmailRequest")
+  @ResponsePayload
+  public GetUserByEmailResponse getUserByEmail(@RequestPayload GetUserByEmailRequest request){
+    GetUserByEmailResponse userByEmailResponse = new GetUserByEmailResponse();
+    User user = this.userService.findUserByEmail(request.getEmail());
+    UserWS userWS = null;
+    if (user != null){
+      userWS = new UserWS();
+      BeanUtils.copyProperties(user, userWS);
+    }
+    userByEmailResponse.setUser(userWS);
+    return userByEmailResponse;
   }
 
   @PayloadRoot(namespace = Utils.NAMESPACE_URI, localPart = "GetUserLoginRequest")
