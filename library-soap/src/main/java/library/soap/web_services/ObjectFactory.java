@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.3.2 
 // Voir <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.02.06 à 05:27:34 PM CET 
+// Généré le : 2020.02.08 à 09:20:14 PM CET 
 //
 
 
@@ -194,6 +194,22 @@ public class ObjectFactory {
      */
     public GetWorkByAuthorResponse createGetWorkByAuthorResponse() {
         return new GetWorkByAuthorResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAvailableBookSizeRequest }
+     * 
+     */
+    public GetAvailableBookSizeRequest createGetAvailableBookSizeRequest() {
+        return new GetAvailableBookSizeRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetAvailableBookSizeResponse }
+     * 
+     */
+    public GetAvailableBookSizeResponse createGetAvailableBookSizeResponse() {
+        return new GetAvailableBookSizeResponse();
     }
 
     /**

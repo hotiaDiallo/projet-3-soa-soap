@@ -16,4 +16,6 @@ public interface WorkService {
   List<Work> findWorkByReleaseDate(Date releaseDate);
 
   List<Work> findWorkByAuthorName(String name);
+
+  int getAvailableBooksSize(Work work);
 }

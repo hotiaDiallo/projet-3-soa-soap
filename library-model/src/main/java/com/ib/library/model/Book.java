@@ -1,7 +1,6 @@
 package com.ib.library.model;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,10 +17,24 @@ public class Book implements Serializable {
   @Id @GeneratedValue(generator="gen_book", strategy = GenerationType.IDENTITY)
   @SequenceGenerator(name="gen_book", sequenceName="seq_book", allocationSize=1)
   private Integer id;
+  @ManyToOne(fetch = FetchType.LAZY, targetEntity = Work.class)
+  private Work work;
   private String ISBN;
   private boolean bookStatus;
 
   public Book() {
+  }
+
+  public Work getWork() {
+    return work;
+  }
+
+  public void setWork(Work work) {
+    this.work = work;
+  }
+
+  public boolean isBookStatus() {
+    return bookStatus;
   }
 
   public Book(String ISBN, boolean bookStatus) {

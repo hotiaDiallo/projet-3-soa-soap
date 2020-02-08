@@ -6,6 +6,8 @@ import com.ib.library.soap.Utils;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import library.soap.web_services.GetAvailableBookSizeRequest;
+import library.soap.web_services.GetAvailableBookSizeResponse;
 import library.soap.web_services.GetWorkByAuthorNameRequest;
 import library.soap.web_services.GetWorkByAuthorNameResponse;
 import library.soap.web_services.GetWorkByAuthorRequest;
@@ -82,6 +84,16 @@ public class WorkEndPoint {
     BeanUtils.copyProperties(releaseDate, request.getReleaseDate());
     List<Work> works = workService.findWorkByReleaseDate(releaseDate);
     workResponse.getWork().addAll(populateReturnList(works));
+    return workResponse;
+  }
+
+  @PayloadRoot(namespace = Utils.NAMESPACE_URI, localPart = "getAvailableBookSizeRequest")
+  @ResponsePayload
+  public GetAvailableBookSizeResponse getAvailableBookSize (@RequestPayload GetAvailableBookSizeRequest request){
+    GetAvailableBookSizeResponse workResponse = new GetAvailableBookSizeResponse();
+    Work work = workService.findWorkById(request.getWorkId());
+    int size = workService.getAvailableBooksSize(work);
+    workResponse.setSize(size);
     return workResponse;
   }
 
