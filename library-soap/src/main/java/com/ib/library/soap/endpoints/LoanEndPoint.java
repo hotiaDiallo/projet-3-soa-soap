@@ -58,8 +58,10 @@ public class LoanEndPoint {
   @ResponsePayload
   public GetCreateLoanResponse createLoan(@RequestPayload GetCreateLoanRequest loanRequest){
     GetCreateLoanResponse loanResponse = new GetCreateLoanResponse();
-    String response = this.loanService.createLoan(loanRequest.getWorkId(), loanRequest.getUserId());
-    loanResponse.setResponse(response);
+    LoanWS loanWS = new LoanWS();
+    Loan loan = this.loanService.createLoan(loanRequest.getWorkId(), loanRequest.getUserId());
+    BeanUtils.copyProperties(loan, loanWS);
+    loanResponse.setLoan(loanWS);
     return loanResponse;
   }
 
@@ -67,8 +69,10 @@ public class LoanEndPoint {
   @ResponsePayload
   public GetExtendLoanResponse extendLoan(@RequestPayload GetExtendLoanRequest loanRequest){
     GetExtendLoanResponse loanResponse = new GetExtendLoanResponse();
-    String response = this.loanService.extendLoan(loanRequest.getLoanId());
-    loanResponse.setResponse(response);
+    LoanWS loanWS = new LoanWS();
+    Loan loan = this.loanService.extendLoan(loanRequest.getLoanId());
+    BeanUtils.copyProperties(loan, loanWS);
+    loanResponse.setLoan(loanWS);
     return loanResponse;
   }
 
@@ -76,8 +80,10 @@ public class LoanEndPoint {
   @ResponsePayload
   public GetReturnLoanResponse returnLoan(@RequestPayload GetReturnLoanRequest loanRequest){
     GetReturnLoanResponse loanResponse = new GetReturnLoanResponse();
-    String response = this.loanService.returnLoan(loanRequest.getLoanId());
-    loanResponse.setResponse(response);
+    LoanWS loanWS = new LoanWS();
+    Loan loan = this.loanService.returnLoan(loanRequest.getLoanId());
+    BeanUtils.copyProperties(loan, loanWS);
+    loanResponse.setLoan(loanWS);
     return loanResponse;
   }
 

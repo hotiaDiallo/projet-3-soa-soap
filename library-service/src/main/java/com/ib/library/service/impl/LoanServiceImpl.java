@@ -36,12 +36,13 @@ public class LoanServiceImpl implements LoanService {
   }
 
   @Override
-  public String createLoan(Integer workId, Integer userId) {
+  public Loan createLoan(Integer workId, Integer userId) {
     User user = userService.findUserById(userId);
     Work work = workService.findWorkById(workId);
     String result = null;
+    Loan loan = null;
     if (work.isLoanable()){
-      Loan loan = new Loan();
+      loan = new Loan();
       Calendar calendar = Calendar.getInstance();
       Date borrowingDate = calendar.getTime();
       calendar.add(calendar.MONTH,1);
@@ -59,7 +60,7 @@ public class LoanServiceImpl implements LoanService {
     }else{
       result = ResultOnAction.LOAN_CREATED_ERROR;
     }
-    return  result;
+    return loan;
   }
 
 
@@ -69,7 +70,7 @@ public class LoanServiceImpl implements LoanService {
   }
 
   @Override
-  public String returnLoan(Integer loanId) {
+  public Loan returnLoan(Integer loanId) {
     String result = null;
     Loan loan = findLoanById(loanId);
     if(loan.getLoanStatus().equals(Status.STATUS_LOAN_ACTIVATED) || loan.getLoanStatus().equals(Status.STATUS_LOAN_EXTENDED)){
@@ -82,11 +83,11 @@ public class LoanServiceImpl implements LoanService {
     }else {
       result = ResultOnAction.LOAN_RETURNED_ERROR;
     }
-    return result;
+    return loan;
   }
 
   @Override
-  public String extendLoan(Integer loanId) {
+  public Loan extendLoan(Integer loanId) {
     Loan loan = findLoanById(loanId);
     String result = null;
     if(loan.getLoanStatus().equals(Status.STATUS_LOAN_ACTIVATED)){
@@ -102,7 +103,7 @@ public class LoanServiceImpl implements LoanService {
     }else {
       result = ResultOnAction.LOAN_EXTENDED_ERROR;
     }
-    return result;
+    return loan;
   }
 
   @Override

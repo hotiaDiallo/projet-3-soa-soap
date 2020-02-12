@@ -7,12 +7,12 @@ public interface LoanService {
 
   Loan findLoanById(Integer id);
 
-  String createLoan(Integer workId, Integer userId);
+  Loan createLoan(Integer workId, Integer userId);
 
   List<Loan> findLoanByUser(Integer userId);
 
-  String returnLoan(Integer loanId);
-  String extendLoan(Integer loanId);
+  Loan returnLoan(Integer loanId);
+  Loan extendLoan(Integer loanId);
 
   List<Loan> findAllLoans();
 }

@@ -300,7 +300,7 @@
   <xs:element name="getCreateLoanResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="response" type="xs:string"/>
+        <xs:element name="loan" type="tns:loanWS"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -317,7 +317,7 @@
   <xs:element name="getExtendLoanResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="response" type="xs:string"/>
+        <xs:element name="loan" type="tns:loanWS"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -334,7 +334,7 @@
   <xs:element name="getReturnLoanResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="response" type="xs:string"/>
+        <xs:element name="loan" type="tns:loanWS"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
