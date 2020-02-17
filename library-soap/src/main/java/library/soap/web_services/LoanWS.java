@@ -2,12 +2,14 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.3.2 
 // Voir <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2020.02.12 à 10:35:43 PM CET 
+// Généré le : 2020.02.15 à 11:54:23 AM CET 
 //
 
 
 package library.soap.web_services;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -28,7 +30,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *       &lt;sequence&gt;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="user" type="{http://library/soap/web-services}userWS"/&gt;
- *         &lt;element name="book" type="{http://library/soap/web-services}bookWS"/&gt;
+ *         &lt;element name="book" type="{http://library/soap/web-services}bookWS" maxOccurs="unbounded"/&gt;
  *         &lt;element name="borrowingDate" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
  *         &lt;element name="returnDate" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
  *         &lt;element name="loanStatus" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
@@ -55,7 +57,7 @@ public class LoanWS {
     @XmlElement(required = true)
     protected UserWS user;
     @XmlElement(required = true)
-    protected BookWS book;
+    protected List<BookWS> book;
     @XmlElement(required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar borrowingDate;
@@ -106,27 +108,32 @@ public class LoanWS {
     }
 
     /**
-     * Obtient la valeur de la propriété book.
+     * Gets the value of the book property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BookWS }
-     *     
-     */
-    public BookWS getBook() {
-        return book;
-    }
-
-    /**
-     * Définit la valeur de la propriété book.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the book property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link BookWS }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getBook().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link BookWS }
+     * 
+     * 
      */
-    public void setBook(BookWS value) {
-        this.book = value;
+    public List<BookWS> getBook() {
+        if (book == null) {
+            book = new ArrayList<BookWS>();
+        }
+        return this.book;
     }
 
     /**

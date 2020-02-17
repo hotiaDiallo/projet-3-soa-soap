@@ -1,11 +1,14 @@
 package com.ib.library.soap.endpoints;
 
+import com.ib.library.model.Book;
 import com.ib.library.model.Work;
 import com.ib.library.service.abstraction.WorkService;
 import com.ib.library.soap.Utils;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import library.soap.web_services.AuthorWS;
+import library.soap.web_services.BookWS;
 import library.soap.web_services.GetAvailableBookSizeRequest;
 import library.soap.web_services.GetAvailableBookSizeResponse;
 import library.soap.web_services.GetWorkByAuthorNameRequest;
@@ -27,7 +30,7 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 @Endpoint
-public class WorkEndPoint {
+public class WorkEndPoint{
 
   @Autowired
   private WorkService workService;
@@ -116,10 +119,26 @@ public class WorkEndPoint {
     List<WorkWS> workWSList = new ArrayList<>();
     for (Work work : workList){
       WorkWS workWS = new WorkWS();
+      copy(work, workWS);
       BeanUtils.copyProperties(work, workWS);
       workWSList.add(workWS);
     }
     return workWSList;
+  }
+
+  public void copy(Work work, WorkWS workWS){
+    BookWS bookWS = new BookWS();
+    AuthorWS authorWS = new AuthorWS();
+    BeanUtils.copyProperties(work.getBooks(), bookWS);
+    BeanUtils.copyProperties(work.getAuthor(), authorWS);
+    for(Book book : work.getBooks()){
+      bookWS.setId(book.getId());
+      bookWS.setBookStatus(book.getBookStatus());
+      bookWS.setEsbn(book.getISBN());
+    }
+    workWS.setAuthor(authorWS);
+    workWS.setBooks(bookWS);
+    workWS.setId( work.getId());
   }
 }
 
