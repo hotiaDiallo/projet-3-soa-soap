@@ -5,6 +5,7 @@ import com.ib.library.service.abstraction.LoanService;
 import com.ib.library.soap.Utils;
 import java.util.ArrayList;
 import java.util.List;
+import library.soap.web_services.BookWS;
 import library.soap.web_services.GetCreateLoanRequest;
 import library.soap.web_services.GetCreateLoanResponse;
 import library.soap.web_services.GetExtendLoanRequest;
@@ -16,6 +17,7 @@ import library.soap.web_services.GetLoanByUserResponse;
 import library.soap.web_services.GetReturnLoanRequest;
 import library.soap.web_services.GetReturnLoanResponse;
 import library.soap.web_services.LoanWS;
+import library.soap.web_services.UserWS;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -61,6 +63,7 @@ public class LoanEndPoint {
     LoanWS loanWS = new LoanWS();
     Loan loan = this.loanService.createLoan(loanRequest.getWorkId(), loanRequest.getUserId());
     BeanUtils.copyProperties(loan, loanWS);
+    copy(loan, loanWS);
     loanResponse.setLoan(loanWS);
     return loanResponse;
   }
@@ -72,6 +75,7 @@ public class LoanEndPoint {
     LoanWS loanWS = new LoanWS();
     Loan loan = this.loanService.extendLoan(loanRequest.getLoanId());
     BeanUtils.copyProperties(loan, loanWS);
+    copy(loan, loanWS);
     loanResponse.setLoan(loanWS);
     return loanResponse;
   }
@@ -83,6 +87,7 @@ public class LoanEndPoint {
     LoanWS loanWS = new LoanWS();
     Loan loan = this.loanService.returnLoan(loanRequest.getLoanId());
     BeanUtils.copyProperties(loan, loanWS);
+    copy(loan, loanWS);
     loanResponse.setLoan(loanWS);
     return loanResponse;
   }
@@ -92,9 +97,30 @@ public class LoanEndPoint {
     for (Loan loan : loanList){
       LoanWS loanWS = new LoanWS();
       BeanUtils.copyProperties(loan, loanWS);
+      copy(loan, loanWS);
       loanWSList.add(loanWS);
     }
     return loanWSList;
+  }
+
+  public void copy(Loan loan, LoanWS loanWS){
+    BookWS bookWS = new BookWS();
+    UserWS userWS = new UserWS();
+
+    BeanUtils.copyProperties(loan.getUser(), userWS);
+    BeanUtils.copyProperties(loan.getBook(), bookWS);
+
+    userWS.setId(loan.getUser().getId());
+    userWS.setFirstName(loan.getUser().getFirstName());
+    userWS.setLastName(loan.getUser().getLastName());
+    userWS.setEmail(loan.getUser().getEmail());
+
+    bookWS.setId(loan.getBook().getId());
+    bookWS.setEsbn(loan.getBook().getISBN());
+    bookWS.setBookStatus(loan.getBook().getBookStatus());
+
+    loanWS.setBook(bookWS);
+    loanWS.setUser(userWS);
   }
 
 }
