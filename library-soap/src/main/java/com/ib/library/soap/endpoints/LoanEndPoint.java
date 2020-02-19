@@ -5,6 +5,7 @@ import com.ib.library.service.abstraction.LoanService;
 import com.ib.library.soap.Utils;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.datatype.XMLGregorianCalendar;
 import library.soap.web_services.BookWS;
 import library.soap.web_services.GetCreateLoanRequest;
 import library.soap.web_services.GetCreateLoanResponse;
@@ -117,8 +118,13 @@ public class LoanEndPoint {
 
     bookWS.setId(loan.getBook().getId());
     bookWS.setEsbn(loan.getBook().getISBN());
-    bookWS.setBookStatus(loan.getBook().getBookStatus());
+    bookWS.setBookStatus(loan.getBook().getBookStatus());;
 
+    XMLGregorianCalendar borrowingDate = Utils.toXMLGregorianCalendar(loan.getBorrowingDate());
+    XMLGregorianCalendar returningDate = Utils.toXMLGregorianCalendar(loan.getReturningDate());
+
+    loanWS.setBorrowingDate(borrowingDate);
+    loanWS.setReturnDate(returningDate);
     loanWS.setBook(bookWS);
     loanWS.setUser(userWS);
   }

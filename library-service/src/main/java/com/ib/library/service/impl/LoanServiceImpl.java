@@ -39,7 +39,6 @@ public class LoanServiceImpl implements LoanService {
   public Loan createLoan(Integer workId, Integer userId) {
     User user = userService.findUserById(userId);
     Work work = workService.findWorkById(workId);
-    String result = null;
     Loan loan = null;
     if (work.isLoanable()){
       loan = new Loan();
@@ -56,9 +55,7 @@ public class LoanServiceImpl implements LoanService {
       loanRepository.save(loan);
       book.setBookStatus(false);
       bookRepository.save(book);
-      result = ResultOnAction.LOAN_CREATED_SUCCESS + " Status : "+loan.getLoanStatus();
     }else{
-      result = ResultOnAction.LOAN_CREATED_ERROR;
     }
     return loan;
   }

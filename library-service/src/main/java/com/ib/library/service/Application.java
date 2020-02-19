@@ -1,6 +1,5 @@
 package com.ib.library.service;
 
-import com.ib.library.model.Loan;
 import com.ib.library.repository.AuthorRepository;
 import com.ib.library.repository.BookRepository;
 import com.ib.library.repository.LibraryRepository;
@@ -116,8 +115,6 @@ public class Application implements CommandLineRunner {
 
     //List<Loan> loans = loanService.findLoanByUser(1);
 //    int size = 0;
-    Loan loan = loanService.returnLoan(10);
-    System.out.println(loan);
     System.out.println("##########################################################");
 
   }
