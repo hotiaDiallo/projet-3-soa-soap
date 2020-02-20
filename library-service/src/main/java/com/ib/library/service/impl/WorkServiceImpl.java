@@ -17,6 +17,11 @@ public class WorkServiceImpl implements WorkService {
   private WorkRepository workRepository;
 
   @Override
+  public List<Work> getAllWorks() {
+    return (List<Work>) workRepository.findAll();
+  }
+
+  @Override
   public Work findWorkById(Integer id) {
     return workRepository.findById(id).get();
   }

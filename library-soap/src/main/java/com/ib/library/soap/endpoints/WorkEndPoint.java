@@ -100,21 +100,6 @@ public class WorkEndPoint{
     return workResponse;
   }
 
-//  @PayloadRoot(namespace = Utils.NAMESPACE_URI, localPart = "getWorkByAuthorAndReleaseDateRequest")
-//  @ResponsePayload
-//  public GetWorkByAuthorAndReleaseDateResponse getWorkByAuthor (@RequestPayload GetWorkByAuthorAndReleaseDateRequest request){
-//    GetWorkByAuthorAndReleaseDateResponse workResponse = new GetWorkByAuthorAndReleaseDateResponse();
-//    Author author = new Author();
-//    Date releaseDate = new Date();
-//    BeanUtils.copyProperties(request.getAuthor(), author);
-//    BeanUtils.copyProperties(request.getReleaseDate(), releaseDate);
-//    Work work = workService.findWorkByAuthorAndReleaseDate(author, releaseDate);
-//    WorkWS workWS = new WorkWS();
-//    BeanUtils.copyProperties(workWS, work);
-//    workResponse.setWork(workWS);
-//    return workResponse;
-//  }
-
   private List<WorkWS> populateReturnList(List<Work> workList){
     List<WorkWS> workWSList = new ArrayList<>();
     for (Work work : workList){

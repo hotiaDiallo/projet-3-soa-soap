@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 public interface WorkService {
+  List<Work> getAllWorks();
   Work findWorkById(Integer id);
 
   List<Work> findWorkByAuthor(Author author);

@@ -8,8 +8,11 @@
 
 package library.soap.web_services;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -24,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="works" type="{http://library/soap/web-services}workWS" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -35,27 +38,41 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "id"
+    "works"
 })
-@XmlRootElement(name = "getAuthorByIdRequest")
-public class GetAuthorByIdRequest {
+@XmlRootElement(name = "getAllWorksResponse")
+public class GetAllWorksResponse {
 
-    protected int id;
-
-    /**
-     * Obtient la valeur de la propriété id.
-     * 
-     */
-    public int getId() {
-        return id;
-    }
+    @XmlElement(required = true, nillable = true)
+    protected List<WorkWS> works;
 
     /**
-     * Définit la valeur de la propriété id.
+     * Gets the value of the works property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the works property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getWorks().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link WorkWS }
+     * 
      * 
      */
-    public void setId(int value) {
-        this.id = value;
+    public List<WorkWS> getWorks() {
+        if (works == null) {
+            works = new ArrayList<WorkWS>();
+        }
+        return this.works;
     }
 
 }
