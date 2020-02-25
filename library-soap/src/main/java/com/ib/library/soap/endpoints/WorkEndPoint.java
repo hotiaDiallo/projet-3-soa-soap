@@ -4,30 +4,17 @@ import com.ib.library.model.Book;
 import com.ib.library.model.Work;
 import com.ib.library.service.abstraction.WorkService;
 import com.ib.library.soap.Utils;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import library.soap.web_services.AuthorWS;
-import library.soap.web_services.BookWS;
-import library.soap.web_services.GetAvailableBookSizeRequest;
-import library.soap.web_services.GetAvailableBookSizeResponse;
-import library.soap.web_services.GetWorkByAuthorNameRequest;
-import library.soap.web_services.GetWorkByAuthorNameResponse;
-import library.soap.web_services.GetWorkByAuthorRequest;
-import library.soap.web_services.GetWorkByAuthorResponse;
-import library.soap.web_services.GetWorkByIdRequest;
-import library.soap.web_services.GetWorkByIdResponse;
-import library.soap.web_services.GetWorkByReleaseDateRequest;
-import library.soap.web_services.GetWorkByReleaseDateResponse;
-import library.soap.web_services.GetWorkByTitleRequest;
-import library.soap.web_services.GetWorkByTitleResponse;
-import library.soap.web_services.WorkWS;
+import library.soap.web_services.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Endpoint
 public class WorkEndPoint{
@@ -47,6 +34,15 @@ public class WorkEndPoint{
     }
     workByIdResponse.setWork(workWS);
     return workByIdResponse;
+  }
+
+  @PayloadRoot(namespace = Utils.NAMESPACE_URI, localPart = "getAllWorksRequest")
+  @ResponsePayload
+  public GetAllWorksResponse getAllWorks (@RequestPayload GetAllWorksRequest request){
+    GetAllWorksResponse workResponse = new GetAllWorksResponse();
+    List<Work> works = workService.getAllWorks();
+    workResponse.getWorks().addAll(populateReturnList(works));
+    return workResponse;
   }
 
 
