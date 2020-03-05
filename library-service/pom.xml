@@ -33,15 +33,21 @@
       <version>1.0-SNAPSHOT</version>
     </dependency>
 
+    <!-- send email -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-mail</artifactId>
+    </dependency>
+
   </dependencies>
 
-<!--  <build>-->
-<!--    <plugins>-->
-<!--      <plugin>-->
-<!--        <groupId>org.springframework.boot</groupId>-->
-<!--        <artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--      </plugin>-->
-<!--    </plugins>-->
-<!--  </build>-->
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>
