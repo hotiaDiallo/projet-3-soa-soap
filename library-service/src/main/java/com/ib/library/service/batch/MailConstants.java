@@ -1,6 +1,6 @@
-package com.ib.library.service.notifications;
+package com.ib.library.service.batch;
 
-public class MyConstants {
+public class MailConstants {
 
     public static final String MY_EMAIL = "ibrahima@gmail.com";
 

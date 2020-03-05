@@ -1,4 +1,4 @@
-package com.ib.library.service.notifications;
+package com.ib.library.service.batch;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,15 +8,15 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import java.util.Properties;
 
 @Configuration
-public class MailConfig {
+public class MailSenderConfiguration {
     @Bean
     public JavaMailSender getJavaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
 
-        mailSender.setUsername(MyConstants.MY_EMAIL);
-        mailSender.setPassword(MyConstants.MY_PASSWORD);
+        mailSender.setUsername(MailConstants.MY_EMAIL);
+        mailSender.setPassword(MailConstants.MY_PASSWORD);
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");

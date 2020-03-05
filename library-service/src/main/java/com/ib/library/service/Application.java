@@ -3,8 +3,8 @@ package com.ib.library.service;
 import com.ib.library.model.Loan;
 import com.ib.library.repository.*;
 import com.ib.library.service.abstraction.*;
-import com.ib.library.service.notifications.LateLoan;
-import com.ib.library.service.notifications.MyConstants;
+import com.ib.library.service.batch.LateLoan;
+import com.ib.library.service.batch.MailConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -55,7 +55,7 @@ public class Application implements CommandLineRunner {
 
     System.out.println("##########################################################");
     List<Loan> loansByUser = lateLoan.findAllLateLoansByUser("ibraDiallo@gmail.com");
-    lateLoan.sendEmail(MyConstants.FRIEND_EMAIL);
+    lateLoan.sendEmail(MailConstants.FRIEND_EMAIL);
     System.out.println("##########################################################");
 
   }

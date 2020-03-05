@@ -1,4 +1,4 @@
-package com.ib.library.service.notifications;
+package com.ib.library.service.batch;
 
 import com.ib.library.model.Loan;
 import com.ib.library.repository.LoanRepository;
