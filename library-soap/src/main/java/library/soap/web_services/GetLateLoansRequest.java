@@ -32,8 +32,8 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-@XmlRootElement(name = "getLoansRequest")
-public class GetLoansRequest {
+@XmlRootElement(name = "getLateLoansRequest")
+public class GetLateLoansRequest {
 
 
 }

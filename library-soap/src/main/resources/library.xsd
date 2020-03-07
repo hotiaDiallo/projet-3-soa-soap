@@ -367,6 +367,19 @@
     </xs:complexType>
   </xs:element>
 
+  <!-- ============== GET ALL LATE LOANS ===================-->
+  <xs:element name="getLateLoansRequest">
+    <xs:complexType/>
+  </xs:element>
+
+  <xs:element name="getLateLoansResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="loans" type="tns:loanWS" maxOccurs="unbounded" nillable="true"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
   <!-- ============== GET Loan BY USER ===================-->
   <xs:element name="getLoanByUserRequest">
     <xs:complexType>

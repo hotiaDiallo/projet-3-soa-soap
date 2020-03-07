@@ -1,10 +1,10 @@
 package com.ib.library.service;
 
-import com.ib.library.model.Loan;
 import com.ib.library.repository.*;
-import com.ib.library.service.abstraction.*;
-import com.ib.library.service.batch.LateLoan;
-import com.ib.library.service.batch.MailConstants;
+import com.ib.library.service.abstraction.BookService;
+import com.ib.library.service.abstraction.LoanService;
+import com.ib.library.service.abstraction.UserService;
+import com.ib.library.service.abstraction.WorkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -12,8 +12,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-
-import java.util.List;
 
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = {"com.ib.library"})
@@ -37,8 +35,6 @@ public class Application implements CommandLineRunner {
   @Autowired
   private LoanService loanService;
   @Autowired
-  private LateLoan lateLoan;
-  @Autowired
   private WorkService workService;
   @Autowired
   private BookService bookService;
@@ -54,8 +50,6 @@ public class Application implements CommandLineRunner {
   public void run(String... args) throws Exception {
 
     System.out.println("##########################################################");
-    List<Loan> loansByUser = lateLoan.findAllLateLoansByUser("ibraDiallo@gmail.com");
-    lateLoan.sendEmail(MailConstants.FRIEND_EMAIL);
     System.out.println("##########################################################");
 
   }

@@ -11,11 +11,13 @@ import com.ib.library.service.Utils.Status;
 import com.ib.library.service.abstraction.LoanService;
 import com.ib.library.service.abstraction.UserService;
 import com.ib.library.service.abstraction.WorkService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 @Service
 public class LoanServiceImpl implements LoanService {
@@ -107,4 +109,22 @@ public class LoanServiceImpl implements LoanService {
   public List<Loan> findAllLoans() {
     return (List<Loan>) loanRepository.findAll();
   }
+
+  @Override
+  public List<Loan> findAllLateLoans() {
+    Calendar calendar = Calendar.getInstance();
+    Date currentDate = calendar.getTime();
+    List<Loan> loans = (List<Loan>) loanRepository.findAll();
+    List<Loan> lateLoans = null;
+    if (!loans.isEmpty()){
+      lateLoans = new ArrayList<>();
+      for(Loan loan : loans){
+        if (loan.getReturningDate().after(currentDate)){
+          lateLoans.add(loan);
+        }
+      }
+    }
+    return lateLoans;
+  }
+
 }

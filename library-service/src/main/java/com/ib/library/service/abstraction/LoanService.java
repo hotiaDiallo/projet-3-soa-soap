@@ -15,4 +15,6 @@ public interface LoanService {
   Loan extendLoan(Integer loanId);
 
   List<Loan> findAllLoans();
+
+  List<Loan> findAllLateLoans();
 }
