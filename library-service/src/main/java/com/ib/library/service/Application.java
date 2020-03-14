@@ -1,5 +1,6 @@
 package com.ib.library.service;
 
+import com.ib.library.model.Loan;
 import com.ib.library.repository.*;
 import com.ib.library.service.abstraction.BookService;
 import com.ib.library.service.abstraction.LoanService;
@@ -12,6 +13,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
+import java.util.List;
 
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = {"com.ib.library"})
@@ -50,6 +53,8 @@ public class Application implements CommandLineRunner {
   public void run(String... args) throws Exception {
 
     System.out.println("##########################################################");
+    List<Loan> allLateLoans = this.loanService.findAllLateLoans();
+    allLateLoans.forEach(loan -> System.out.println(loan.getReturningDate()));
     System.out.println("##########################################################");
 
   }

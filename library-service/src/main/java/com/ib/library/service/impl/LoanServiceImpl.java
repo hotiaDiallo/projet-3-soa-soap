@@ -119,7 +119,7 @@ public class LoanServiceImpl implements LoanService {
     if (!loans.isEmpty()){
       lateLoans = new ArrayList<>();
       for(Loan loan : loans){
-        if (loan.getReturningDate().after(currentDate)){
+        if (loan.getReturningDate().before(currentDate)){
           lateLoans.add(loan);
         }
       }
