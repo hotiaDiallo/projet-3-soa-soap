@@ -39,6 +39,10 @@ spring.datasource.driver-class-name= com.mysql.cj.jdbc.Driver
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
 ```
+#### Lancer de l'application du web service
+```bash
+C'est l'application qui gère les web services de la bibliothèque
+```
 - Lorsque cela est terminé, rendez-vous dans le répertoire `library/library-soap` et tapez la commande: `mvn spring-boot:run`
 Cette commande va lancer votre application et créer les tables correspondant aux différentes entités du projet dans la base de données que vous avez créée
 
@@ -47,4 +51,28 @@ Cette commande va lancer votre application et créer les tables correspondant au
 Dans le dossier `data` vous allez trouver le fichier `data-init.sql` qui initialisé les données pour tester le service.
 
 #### Accès au web service
-Lorque toutes étapes précédantes ont été réalisé, vous pourrez avoir accès au [WSDL](http://localhost:8080/ws/library.wsdl) du web service. 
+Lorque toutes étapes précédantes ont été réalisé, vous pourrez avoir accès au du web service via le lien suivant [http://localhost:8080/ws/library.wsdl](http://localhost:8080/ws/library.wsdl). 
+
+#### Déploiement de l'application web
+```bash
+C'est l'application qui permet d'accéder à la partie vue et les fontionnalités de la bibliothèque
+```
+- Se mettre dans le dossier `library-webapp` et lancer la commande `mvn spring-boot:run`. L'application sera accessible via le lien [http://localhost:9100](http://localhost:9100)
+
+#### Déploiement batch
+```bash
+le batch gère les relances des prets non rendus à temps
+```
+il faut programmer le lancement du batch selon vos convennaces. Par exemple on peut le programmer pour qu'il s'exécute tous les jours à 09h00. 
+pour cela nous allons créer un script qu'on va lancer grace au planificateur de tâches de notre machine : [le cron](https://doc.ubuntu-fr.org/cron). 
+
+```bash
+12 21 * * *  /bin/sh batch/batch-launcher.sh
+```
+
+
+
+
+
+
+
