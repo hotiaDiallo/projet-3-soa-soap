@@ -13,5 +13,5 @@ public interface WorkRepository extends CrudRepository<Work, Integer> {
   Work findWorkByAuthor_IdAndReleaseDate(Integer id, Date releaseDate);
   List<Work> findWorkByAuthor_Id(Integer id);
 
-  List<Work> findWorkByAuthor_NameContainingIgnoreCase(String name);
+  List<Work> findWorkByAuthor_FullNameContainingIgnoreCase(String name);
 }

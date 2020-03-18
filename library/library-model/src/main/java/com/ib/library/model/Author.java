@@ -19,14 +19,14 @@ public class Author implements Serializable {
   @Id @GeneratedValue(generator="gen_author", strategy = GenerationType.IDENTITY)
   @SequenceGenerator(name="gen_author", sequenceName="seq_author", allocationSize=1)
   private Integer id;
-  private String name;
+  private String fullName;
 
-  public String getName() {
-    return name;
+  public String getFullName() {
+    return fullName;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setFullName(String fullName) {
+    this.fullName = fullName;
   }
 
   private String firstName;

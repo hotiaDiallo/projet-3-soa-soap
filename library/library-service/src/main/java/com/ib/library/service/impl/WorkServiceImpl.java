@@ -57,7 +57,7 @@ public class WorkServiceImpl implements WorkService {
 
   @Override
   public List<Work> findWorkByAuthorName(String name) {
-    return workRepository.findWorkByAuthor_NameContainingIgnoreCase(name);
+    return workRepository.findWorkByAuthor_FullNameContainingIgnoreCase(name);
   }
 
   @Override
