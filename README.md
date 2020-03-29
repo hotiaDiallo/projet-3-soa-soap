@@ -2,6 +2,10 @@
 
 Ceci est le dépôt associé au projet Développez le nouveau système d’information de la bibliothèque d’une grande ville du parcours [Expert Java EE](https://openclassrooms.com/fr/paths/99-expert-java-ee) sur [OpenClassrooms](https://openclassrooms.com).
 
+#### MPD
+![](images/a.png?raw=true)
+
+
 ## Technologies
 
 ### Organisation du projet
