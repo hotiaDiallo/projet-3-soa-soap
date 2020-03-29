@@ -87,7 +87,7 @@ public class LoanController {
     String returningDate = null;
     HttpSession session = request.getSession();
     HashMap userInfo = (HashMap) session.getAttribute("userInfo");
-    if (userInfo != null && userInfo.get("connected").equals("connected")) {
+    if (userInfo != null && "connected".equals(userInfo.get("connected"))) {
       UserWS userWS = (UserWS) userInfo.get("user");
       List<LoanWS> loanWSList = this.loanClient.getLoanByUser(userWS.getId());
       for(LoanWS loan : loanWSList){
