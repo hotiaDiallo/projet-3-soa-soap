@@ -62,12 +62,20 @@ public class LoanController {
 
   @RequestMapping(value = "/prolonger", method = { RequestMethod.GET, RequestMethod.POST})
   public String extend(@RequestParam int id, ModelMap modelMap, HttpServletRequest request){
+    String borrowingDate = null;
+    String returningDate = null;
     HttpSession session = request.getSession();
     HashMap userInfo = (HashMap)session.getAttribute("userInfo");
     UserWS userWS = (UserWS) userInfo.get("user");
     this.loanClient.extendLoan(id);
-    LoanWS loanWS = loanClient.getLoanById(id);
     List<LoanWS> loanWSList = this.loanClient.getLoanByUser(userWS.getId());
+    for(LoanWS loan : loanWSList){
+      borrowingDate = DateFormatService.dateFormat(loan.getBorrowingDate());
+      returningDate = DateFormatService.dateFormat(loan.getReturnDate());
+    }
+    modelMap.addAttribute("borrowingDate", borrowingDate);
+    modelMap.addAttribute("returningDate", returningDate);
+    modelMap.addAttribute("loans", loanWSList);
     modelMap.addAttribute("loans", loanWSList);
     return "loans";
   }
@@ -98,12 +106,19 @@ public class LoanController {
 
   @RequestMapping(value = "/restituer", method = { RequestMethod.GET, RequestMethod.POST})
   public String returnLoan(@RequestParam int id, ModelMap modelMap, HttpServletRequest request){
+    String borrowingDate = null;
+    String returningDate = null;
     HttpSession session = request.getSession();
     HashMap userInfo = (HashMap)session.getAttribute("userInfo");
     UserWS userWS = (UserWS) userInfo.get("user");
     this.loanClient.returnLoan(id);
-    LoanWS loanWS = loanClient.getLoanById(id);
     List<LoanWS> loanWSList = this.loanClient.getLoanByUser(userWS.getId());
+    for(LoanWS loan : loanWSList){
+      borrowingDate = DateFormatService.dateFormat(loan.getBorrowingDate());
+      returningDate = DateFormatService.dateFormat(loan.getReturnDate());
+    }
+    modelMap.addAttribute("borrowingDate", borrowingDate);
+    modelMap.addAttribute("returningDate", returningDate);
     modelMap.addAttribute("loans", loanWSList);
     return "loans";
   }

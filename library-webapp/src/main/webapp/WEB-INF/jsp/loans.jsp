@@ -23,7 +23,7 @@
        <c:forEach items="${ loans }" var="loan" varStatus="status">
          <tbody>
           <tr>
-           <td><c:out value="${ loan.user.firstName }"/><c:out value="${ loan.user.lastName }"/></td>
+           <td><c:out value="${ loan.user.firstName }"/><c:out value=" "/><c:out value="${ loan.user.lastName }"/></td>
            <td><c:out value="${ loan.book.esbn }"/></td>
            <td><c:out value="${ borrowingDate }"/></td>
            <td><c:out value="${ returningDate }"/></td>
